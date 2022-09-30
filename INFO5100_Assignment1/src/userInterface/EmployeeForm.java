@@ -33,33 +33,49 @@ public class EmployeeForm extends javax.swing.JFrame {
         deleteEmployeeBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 204));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setForeground(new java.awt.Color(255, 255, 255));
 
         mainHeader.setBackground(new java.awt.Color(255, 255, 204));
         mainHeader.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        mainHeader.setForeground(new java.awt.Color(255, 255, 204));
         mainHeader.setText("Employee Management System");
 
+        createEmployeeBtn.setBackground(new java.awt.Color(0, 153, 204));
+        createEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
         createEmployeeBtn.setText("Create Employee");
+        createEmployeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         createEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createEmployeeBtnActionPerformed(evt);
             }
         });
 
+        viewEmployeeBtn.setBackground(new java.awt.Color(0, 153, 204));
+        viewEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
         viewEmployeeBtn.setText("View Employee");
+        viewEmployeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         viewEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewEmployeeBtnActionPerformed(evt);
             }
         });
 
+        updateEmployeeBtn.setBackground(new java.awt.Color(0, 153, 204));
+        updateEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
         updateEmployeeBtn.setText("Update Employee");
+        updateEmployeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         updateEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateEmployeeBtnActionPerformed(evt);
             }
         });
 
+        deleteEmployeeBtn.setBackground(new java.awt.Color(0, 153, 204));
+        deleteEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
         deleteEmployeeBtn.setText("Delete Employee");
+        deleteEmployeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deleteEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteEmployeeBtnActionPerformed(evt);
