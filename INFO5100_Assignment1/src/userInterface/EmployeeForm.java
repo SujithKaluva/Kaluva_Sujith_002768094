@@ -26,118 +26,145 @@ public class EmployeeForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mainHeader = new javax.swing.JLabel();
-        createEmployeeBtn = new javax.swing.JButton();
-        viewEmployeeBtn = new javax.swing.JButton();
-        updateEmployeeBtn = new javax.swing.JButton();
-        deleteEmployeeBtn = new javax.swing.JButton();
+        mainPanel = new javax.swing.JSplitPane();
+        rightPanel = new javax.swing.JPanel();
+        mainLabel = new javax.swing.JLabel();
+        leftPanel = new javax.swing.JPanel();
+        createEmpBtn = new javax.swing.JButton();
+        editEmpBtn = new javax.swing.JButton();
+        deleteEmpBtn = new javax.swing.JButton();
+        viewEmpBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(204, 204, 204));
+        setBackground(new java.awt.Color(102, 102, 102));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setForeground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(102, 102, 102));
 
-        mainHeader.setBackground(new java.awt.Color(255, 255, 204));
-        mainHeader.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
-        mainHeader.setForeground(new java.awt.Color(255, 255, 204));
-        mainHeader.setText("Employee Management System");
+        rightPanel.setBackground(new java.awt.Color(51, 51, 51));
 
-        createEmployeeBtn.setBackground(new java.awt.Color(0, 153, 204));
-        createEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
-        createEmployeeBtn.setText("Create Employee");
-        createEmployeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        createEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
+        mainLabel.setBackground(new java.awt.Color(255, 255, 255));
+        mainLabel.setFont(new java.awt.Font("Charter", 0, 18)); // NOI18N
+        mainLabel.setForeground(new java.awt.Color(255, 255, 255));
+        mainLabel.setText("Employee Management System");
+
+        javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
+        rightPanel.setLayout(rightPanelLayout);
+        rightPanelLayout.setHorizontalGroup(
+            rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rightPanelLayout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addComponent(mainLabel)
+                .addContainerGap(161, Short.MAX_VALUE))
+        );
+        rightPanelLayout.setVerticalGroup(
+            rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rightPanelLayout.createSequentialGroup()
+                .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 473, Short.MAX_VALUE))
+        );
+
+        mainPanel.setRightComponent(rightPanel);
+
+        leftPanel.setBackground(new java.awt.Color(204, 204, 204));
+        leftPanel.setForeground(new java.awt.Color(0, 204, 0));
+
+        createEmpBtn.setBackground(new java.awt.Color(0, 153, 204));
+        createEmpBtn.setForeground(new java.awt.Color(255, 255, 255));
+        createEmpBtn.setText("Create Employee");
+        createEmpBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        createEmpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createEmployeeBtnActionPerformed(evt);
+                createEmpBtnActionPerformed(evt);
             }
         });
 
-        viewEmployeeBtn.setBackground(new java.awt.Color(0, 153, 204));
-        viewEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
-        viewEmployeeBtn.setText("View Employee");
-        viewEmployeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        viewEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
+        editEmpBtn.setBackground(new java.awt.Color(0, 153, 204));
+        editEmpBtn.setForeground(new java.awt.Color(255, 255, 255));
+        editEmpBtn.setText("Edit Employee");
+        editEmpBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editEmpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewEmployeeBtnActionPerformed(evt);
+                editEmpBtnActionPerformed(evt);
             }
         });
 
-        updateEmployeeBtn.setBackground(new java.awt.Color(0, 153, 204));
-        updateEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
-        updateEmployeeBtn.setText("Update Employee");
-        updateEmployeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        updateEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
+        deleteEmpBtn.setBackground(new java.awt.Color(0, 153, 204));
+        deleteEmpBtn.setForeground(new java.awt.Color(255, 255, 255));
+        deleteEmpBtn.setText("Delete Employee");
+        deleteEmpBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        viewEmpBtn.setBackground(new java.awt.Color(0, 153, 204));
+        viewEmpBtn.setForeground(new java.awt.Color(255, 255, 255));
+        viewEmpBtn.setText("View Employee");
+        viewEmpBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        viewEmpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateEmployeeBtnActionPerformed(evt);
+                viewEmpBtnActionPerformed(evt);
             }
         });
 
-        deleteEmployeeBtn.setBackground(new java.awt.Color(0, 153, 204));
-        deleteEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
-        deleteEmployeeBtn.setText("Delete Employee");
-        deleteEmployeeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        deleteEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteEmployeeBtnActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
+        leftPanel.setLayout(leftPanelLayout);
+        leftPanelLayout.setHorizontalGroup(
+            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(deleteEmpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(viewEmpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(createEmpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(editEmpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
+        );
+        leftPanelLayout.setVerticalGroup(
+            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(leftPanelLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(createEmpBtn)
+                .addGap(18, 18, 18)
+                .addComponent(editEmpBtn)
+                .addGap(18, 18, 18)
+                .addComponent(deleteEmpBtn)
+                .addGap(18, 18, 18)
+                .addComponent(viewEmpBtn)
+                .addContainerGap(315, Short.MAX_VALUE))
+        );
+
+        mainPanel.setLeftComponent(leftPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(createEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(227, Short.MAX_VALUE)
-                        .addComponent(updateEmployeeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(91, 91, 91)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(deleteEmployeeBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewEmployeeBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(237, 237, 237))
             .addGroup(layout.createSequentialGroup()
-                .addGap(270, 270, 270)
-                .addComponent(mainHeader)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(mainPanel)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(mainHeader)
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(createEmployeeBtn)
-                    .addComponent(viewEmployeeBtn))
-                .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteEmployeeBtn)
-                    .addComponent(updateEmployeeBtn))
-                .addContainerGap(157, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(mainPanel)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void createEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEmployeeBtnActionPerformed
+    private void editEmpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editEmpBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_createEmployeeBtnActionPerformed
+    }//GEN-LAST:event_editEmpBtnActionPerformed
 
-    private void viewEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewEmployeeBtnActionPerformed
+    private void viewEmpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewEmpBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_viewEmployeeBtnActionPerformed
+    }//GEN-LAST:event_viewEmpBtnActionPerformed
 
-    private void updateEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEmployeeBtnActionPerformed
+    private void createEmpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEmpBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_updateEmployeeBtnActionPerformed
-
-    private void deleteEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteEmployeeBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deleteEmployeeBtnActionPerformed
+        createEmployee createEmp = new createEmployee();
+        mainPanel.setRightComponent(createEmp);
+    }//GEN-LAST:event_createEmpBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,10 +202,13 @@ public class EmployeeForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton createEmployeeBtn;
-    private javax.swing.JButton deleteEmployeeBtn;
-    private javax.swing.JLabel mainHeader;
-    private javax.swing.JButton updateEmployeeBtn;
-    private javax.swing.JButton viewEmployeeBtn;
+    private javax.swing.JButton createEmpBtn;
+    private javax.swing.JButton deleteEmpBtn;
+    private javax.swing.JButton editEmpBtn;
+    private javax.swing.JPanel leftPanel;
+    private javax.swing.JLabel mainLabel;
+    private javax.swing.JSplitPane mainPanel;
+    private javax.swing.JPanel rightPanel;
+    private javax.swing.JButton viewEmpBtn;
     // End of variables declaration//GEN-END:variables
 }
