@@ -7,6 +7,8 @@ package userInterface;
 import employeeDetails.EmployeeProfile;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +16,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -68,9 +72,10 @@ public class searchEmployee extends javax.swing.JPanel {
         empEmailIdLabel = new javax.swing.JLabel();
         empPhnNumLabel = new javax.swing.JLabel();
         empNameTxt = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        viewPhoto = new javax.swing.JButton();
         updateEmployeeBtn = new javax.swing.JButton();
         deleteEmpBtn = new javax.swing.JButton();
+        updatePhoto = new javax.swing.JButton();
 
         searchPanel.setBackground(new java.awt.Color(51, 51, 51));
         searchPanel.setForeground(new java.awt.Color(255, 255, 255));
@@ -202,12 +207,12 @@ public class searchEmployee extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 204));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("View Photo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        viewPhoto.setBackground(new java.awt.Color(0, 153, 204));
+        viewPhoto.setForeground(new java.awt.Color(255, 255, 255));
+        viewPhoto.setText("View Photo");
+        viewPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                viewPhotoActionPerformed(evt);
             }
         });
 
@@ -223,6 +228,20 @@ public class searchEmployee extends javax.swing.JPanel {
         deleteEmpBtn.setBackground(new java.awt.Color(0, 153, 204));
         deleteEmpBtn.setForeground(new java.awt.Color(255, 255, 255));
         deleteEmpBtn.setText("Delete Employee");
+        deleteEmpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteEmpBtnActionPerformed(evt);
+            }
+        });
+
+        updatePhoto.setBackground(new java.awt.Color(0, 153, 204));
+        updatePhoto.setForeground(new java.awt.Color(255, 255, 255));
+        updatePhoto.setText("Update Photo");
+        updatePhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePhotoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
@@ -231,30 +250,37 @@ public class searchEmployee extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(searchPanelLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(empNameLabel)
-                            .addComponent(empAgeLabel)
-                            .addComponent(empGenderLabel)
-                            .addComponent(empStartDateLabel)
-                            .addComponent(empLevelLabel)
-                            .addComponent(empTeamInfoLabel))
-                        .addGap(41, 41, 41)
-                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(empNameTxt)
-                            .addComponent(empAgeTxt)
-                            .addComponent(empLevelTxt)
-                            .addComponent(empTeamInfoTxt)
-                            .addComponent(empGenderBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(empStartDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(searchPanelLayout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(empNameLabel)
+                                    .addComponent(empAgeLabel)
+                                    .addComponent(empGenderLabel)
+                                    .addComponent(empStartDateLabel)
+                                    .addComponent(empLevelLabel)
+                                    .addComponent(empTeamInfoLabel))
+                                .addGap(41, 41, 41)
+                                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(empNameTxt)
+                                    .addComponent(empAgeTxt)
+                                    .addComponent(empLevelTxt)
+                                    .addComponent(empTeamInfoTxt)
+                                    .addComponent(empGenderBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(empStartDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(searchPanelLayout.createSequentialGroup()
+                                .addGap(100, 100, 100)
+                                .addComponent(viewPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(updatePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
-                                .addGap(69, 69, 69)
+                                .addGap(64, 64, 64)
                                 .addComponent(empPositionTitleLabel)
                                 .addGap(18, 18, 18)
                                 .addComponent(empPositionTitleTxt))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
                                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(searchPanelLayout.createSequentialGroup()
@@ -265,11 +291,12 @@ public class searchEmployee extends javax.swing.JPanel {
                                             .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(empEmailTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                                                 .addComponent(empPhoneTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
-                                        .addComponent(contactInfoLabel)
-                                        .addComponent(deleteEmpBtn))
+                                        .addComponent(contactInfoLabel))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
-                                        .addComponent(jButton1)
-                                        .addGap(116, 116, 116))))))
+                                        .addComponent(updateEmployeeBtn)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(deleteEmpBtn)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, searchPanelLayout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,10 +314,6 @@ public class searchEmployee extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(empIdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27))
-            .addGroup(searchPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(updateEmployeeBtn)
-                .addGap(372, 372, 372))
         );
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,13 +365,13 @@ public class searchEmployee extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(empEmailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(empEmailIdLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                            .addComponent(empEmailIdLabel))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updateEmployeeBtn)
-                    .addComponent(deleteEmpBtn))
+                    .addComponent(deleteEmpBtn)
+                    .addComponent(viewPhoto)
+                    .addComponent(updatePhoto))
                 .addGap(56, 56, 56))
         );
 
@@ -445,21 +468,25 @@ public class searchEmployee extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_searchEmpBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void viewPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPhotoActionPerformed
         try {
             // TODO add your handling code here:
-            
-            BufferedImage photo = ImageIO.read(new ByteArrayInputStream(searchedEmployee.getPhoto()));
-            JFrame viewImgFrame = new JFrame();
-            ImageIcon icon = new ImageIcon(photo);
-            JLabel label = new JLabel(icon);
-            viewImgFrame.add(label);
-            viewImgFrame.pack();
-            viewImgFrame.setVisible(true);
+            if(searchedEmployee==null || searchedEmployee.getPhoto()==null || searchedEmployee.getPhoto().length==0){
+                JOptionPane.showMessageDialog(this, "Employee Image Unavailable");
+            }
+            else{
+                BufferedImage photo = ImageIO.read(new ByteArrayInputStream(searchedEmployee.getPhoto()));
+                JFrame viewImgFrame = new JFrame();
+                ImageIcon icon = new ImageIcon(photo);
+                JLabel label = new JLabel(icon);
+                viewImgFrame.add(label);
+                viewImgFrame.pack();
+                viewImgFrame.setVisible(true);
+            }
         } catch (IOException ex) {
             Logger.getLogger(searchEmployee.class.getName()).log(Level.SEVERE, "Error in Displaying Image", ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_viewPhotoActionPerformed
 
     private void updateEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEmployeeBtnActionPerformed
         // TODO add your handling code here:
@@ -476,6 +503,59 @@ public class searchEmployee extends javax.swing.JPanel {
 
         JOptionPane.showMessageDialog(this, "Employee Profile Updated");
     }//GEN-LAST:event_updateEmployeeBtnActionPerformed
+
+    private void deleteEmpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteEmpBtnActionPerformed
+        // TODO add your handling code here:
+        if (searchedEmployee.getEmpId() != null && searchedEmployee.getEmpId() != "") {
+            createEmployee.employeeList.remove(searchedEmployee);
+            
+            empNameTxt.setText("");
+            empIdTxt.setText("");
+            empAgeTxt.setText("");
+            empStartDatePicker.setDate(null);
+            empLevelTxt.setText("");
+            empTeamInfoTxt.setText("");
+            empPositionTitleTxt.setText("");
+            empPhoneTxt.setText("");
+            empEmailTxt.setText("");
+            empGenderBox.setSelectedItem(null);
+            
+            JOptionPane.showMessageDialog(this, "Employee Profile Deleted");
+        } else {
+            JOptionPane.showMessageDialog(this, "Employee Profile Not Available");
+        }
+    }//GEN-LAST:event_deleteEmpBtnActionPerformed
+
+    private void updatePhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePhotoActionPerformed
+        // TODO add your handling code here:
+        if(searchedEmployee == null) {
+            JOptionPane.showMessageDialog(this,"Employee Not Found");
+        } else {
+            JFileChooser fileUploader = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                    "JPG & GIF Images", "jpg", "gif","jpeg");
+            fileUploader.setFileFilter(filter);
+            fileUploader.setDialogTitle("Choose Your Photo");
+            fileUploader.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            int returnval = fileUploader.showOpenDialog(this);
+            if (returnval == JFileChooser.APPROVE_OPTION) {
+                File uploadedFile = fileUploader.getSelectedFile();
+                BufferedImage bufferedImageObj;
+                try {
+                    bufferedImageObj = ImageIO.read(uploadedFile);
+                    ByteArrayOutputStream byteArrayOs = new ByteArrayOutputStream();
+                    ImageIO.write(bufferedImageObj, "jpg", byteArrayOs);
+                    byte[] photoBytes = byteArrayOs.toByteArray();
+                    searchedEmployee.setPhoto(photoBytes);
+                    JOptionPane.showMessageDialog(fileUploader, "Photo Updated Successfully");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(fileUploader, "Error while uploading Photo");
+                }
+
+            }
+        }
+    }//GEN-LAST:event_updatePhotoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -502,11 +582,12 @@ public class searchEmployee extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser empStartDatePicker;
     private javax.swing.JLabel empTeamInfoLabel;
     private javax.swing.JTextField empTeamInfoTxt;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton searchEmpBtn;
     private javax.swing.JLabel searchEmpLabel;
     private javax.swing.JTextField searchIdField;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JButton updateEmployeeBtn;
+    private javax.swing.JButton updatePhoto;
+    private javax.swing.JButton viewPhoto;
     // End of variables declaration//GEN-END:variables
 }

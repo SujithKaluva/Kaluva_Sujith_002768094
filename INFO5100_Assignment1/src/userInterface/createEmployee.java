@@ -416,7 +416,7 @@ public class createEmployee extends javax.swing.JPanel {
         else {
             switch (name) {
                 case "empName":
-                    if (!text.matches("^[a-zA-z]+$")) {
+                    if (!text.matches("^[a-zA-z ]*$")) {
                         raiseError = true;
                         errorMsg = String.format("Please enter valid values for %s", name);
                     }
