@@ -34,8 +34,6 @@ public class EmployeeForm extends javax.swing.JFrame {
         mainLabel = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
         createEmpBtn = new javax.swing.JButton();
-        editEmpBtn = new javax.swing.JButton();
-        deleteEmpBtn = new javax.swing.JButton();
         empDirectoryBtn = new javax.swing.JButton();
         searchEmpBtn = new javax.swing.JButton();
 
@@ -56,16 +54,16 @@ public class EmployeeForm extends javax.swing.JFrame {
         rightPanelLayout.setHorizontalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightPanelLayout.createSequentialGroup()
-                .addGap(154, 154, 154)
+                .addGap(158, 158, 158)
                 .addComponent(mainLabel)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         rightPanelLayout.setVerticalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightPanelLayout.createSequentialGroup()
-                .addGap(162, 162, 162)
+                .addGap(186, 186, 186)
                 .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(311, Short.MAX_VALUE))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
 
         mainPanel.setRightComponent(rightPanel);
@@ -82,21 +80,6 @@ public class EmployeeForm extends javax.swing.JFrame {
                 createEmpBtnActionPerformed(evt);
             }
         });
-
-        editEmpBtn.setBackground(new java.awt.Color(0, 153, 204));
-        editEmpBtn.setForeground(new java.awt.Color(255, 255, 255));
-        editEmpBtn.setText("Edit Employee");
-        editEmpBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        editEmpBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editEmpBtnActionPerformed(evt);
-            }
-        });
-
-        deleteEmpBtn.setBackground(new java.awt.Color(0, 153, 204));
-        deleteEmpBtn.setForeground(new java.awt.Color(255, 255, 255));
-        deleteEmpBtn.setText("Delete Employee");
-        deleteEmpBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         empDirectoryBtn.setBackground(new java.awt.Color(0, 153, 204));
         empDirectoryBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -122,30 +105,24 @@ public class EmployeeForm extends javax.swing.JFrame {
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(leftPanelLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(searchEmpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(empDirectoryBtn)
-                    .addComponent(deleteEmpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editEmpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(createEmpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(104, 104, 104)
+                .addGap(155, 155, 155)
                 .addComponent(createEmpBtn)
-                .addGap(18, 18, 18)
-                .addComponent(editEmpBtn)
-                .addGap(18, 18, 18)
-                .addComponent(deleteEmpBtn)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(empDirectoryBtn)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(searchEmpBtn)
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addContainerGap(262, Short.MAX_VALUE))
         );
 
         mainPanel.setLeftComponent(leftPanel);
@@ -169,10 +146,6 @@ public class EmployeeForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void editEmpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editEmpBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editEmpBtnActionPerformed
 
     private void empDirectoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empDirectoryBtnActionPerformed
         // TODO add your handling code here:
@@ -229,8 +202,6 @@ public class EmployeeForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createEmpBtn;
-    private javax.swing.JButton deleteEmpBtn;
-    private javax.swing.JButton editEmpBtn;
     private javax.swing.JButton empDirectoryBtn;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JLabel mainLabel;

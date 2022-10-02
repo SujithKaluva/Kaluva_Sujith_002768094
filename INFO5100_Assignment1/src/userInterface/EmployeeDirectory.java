@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,6 +23,7 @@ public class EmployeeDirectory extends javax.swing.JPanel {
     
   
     ArrayList<EmployeeProfile> empList=new ArrayList<>(List.copyOf(createEmployee.employeeList));
+    ArrayList<EmployeeProfile> filteredEmpList;
     public EmployeeDirectory() {
         initComponents();
         SimpleDateFormat dateFormat= new SimpleDateFormat("MMM dd, yyyy");
@@ -54,7 +56,15 @@ public class EmployeeDirectory extends javax.swing.JPanel {
 
         empTable = new javax.swing.JScrollPane();
         emptableDate = new javax.swing.JTable();
+        searchType = new javax.swing.JComboBox<>();
+        searchText = new javax.swing.JTextField();
+        searchEmployeeButton = new javax.swing.JButton();
+        clearResults = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(51, 51, 51));
+
+        emptableDate.setBackground(new java.awt.Color(51, 51, 51));
+        emptableDate.setForeground(new java.awt.Color(255, 255, 255));
         emptableDate.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -83,25 +93,134 @@ public class EmployeeDirectory extends javax.swing.JPanel {
         });
         empTable.setViewportView(emptableDate);
 
+        searchType.setBackground(new java.awt.Color(255, 255, 255));
+        searchType.setForeground(new java.awt.Color(0, 0, 0));
+        searchType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Employee Id", "Phone Number", "Gender", "Email Id" }));
+
+        searchText.setBackground(new java.awt.Color(255, 255, 255));
+        searchText.setForeground(new java.awt.Color(0, 0, 0));
+
+        searchEmployeeButton.setText("Search");
+        searchEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchEmployeeButtonActionPerformed(evt);
+            }
+        });
+
+        clearResults.setText("Clear");
+        clearResults.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearResultsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(empTable, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(searchType, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(searchText, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(searchEmployeeButton)
+                .addGap(18, 18, 18)
+                .addComponent(clearResults)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(empTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchEmployeeButton)
+                    .addComponent(clearResults)
+                    .addComponent(searchText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(empTable, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void searchEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchEmployeeButtonActionPerformed
+        // TODO add your handling code here:
+        String searchType = this.searchType.getSelectedItem().toString();
+        System.out.println(searchType);      
+        String searchText = this.searchText.getText();
+        System.out.println(searchText);
+        filteredEmpList = new ArrayList<EmployeeProfile>();
+        for (EmployeeProfile emp : empList) {
+            if (searchType == "Employee Id" && String.valueOf(emp.getEmpId()).equals(searchText)) filteredEmpList.add(emp);
+            else if(searchType == "Phone Number" && emp.getCellNumber().contains(searchText)) filteredEmpList.add(emp);
+            else if(searchType == "Gender" && emp.getEmpGender().contains(searchText)) filteredEmpList.add(emp);
+            else if(searchType == "Email Id" && emp.getEmailId().contains(searchText)) filteredEmpList.add(emp);
+        }
+        System.out.println(filteredEmpList.size());
+        if(filteredEmpList.size()>0){
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+            DefaultTableModel model = (DefaultTableModel) emptableDate.getModel();
+            model.setRowCount(0);
+            for (EmployeeProfile empObj : filteredEmpList) {
+                Object[] row = new Object[10];
+                row[0] = empObj.getEmpName();
+                row[1] = empObj.getEmpId();
+                row[2] = empObj.getEmpAge();
+                row[3] = empObj.getEmpGender();
+                row[4] = dateFormat.format(empObj.getStartDate());
+                row[5] = empObj.getLevel();
+                row[6] = empObj.getTeamInfo();
+                row[7] = empObj.getPositionTitle();
+                row[8] = empObj.getCellNumber();
+                row[9] = empObj.getEmailId();
+                model.addRow(row);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Records not found");
+            DefaultTableModel model = (DefaultTableModel) emptableDate.getModel();
+            model.setRowCount(0);
+        }
+
+
+//        if(searchType == "Employee Id"){
+//        }
+//        else if(searchType == "Phone Number")
+//        else if(searchType == "Gender")
+//        else if(searchType == "Email Id")
+    }//GEN-LAST:event_searchEmployeeButtonActionPerformed
+
+    private void clearResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearResultsActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat dateFormat= new SimpleDateFormat("MMM dd, yyyy");
+        DefaultTableModel model = (DefaultTableModel)emptableDate.getModel();
+        model.setRowCount(0);
+        for(EmployeeProfile empObj:empList){
+            Object[] row = new Object[10];
+            row[0] = empObj.getEmpName();
+            row[1] = empObj.getEmpId();
+            row[2] = empObj.getEmpAge();
+            row[3] = empObj.getEmpGender();
+            row[4] = dateFormat.format(empObj.getStartDate());
+            row[5] = empObj.getLevel();
+            row[6] = empObj.getTeamInfo();
+            row[7] = empObj.getPositionTitle();
+            row[8] = empObj.getCellNumber();
+            row[9] = empObj.getEmailId();
+            model.addRow(row);
+        }
+    }//GEN-LAST:event_clearResultsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton clearResults;
     private javax.swing.JScrollPane empTable;
     private javax.swing.JTable emptableDate;
+    private javax.swing.JButton searchEmployeeButton;
+    private javax.swing.JTextField searchText;
+    private javax.swing.JComboBox<String> searchType;
     // End of variables declaration//GEN-END:variables
 }
