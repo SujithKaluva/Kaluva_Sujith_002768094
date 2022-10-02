@@ -59,7 +59,7 @@ public class createEmployee extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        createEmpPanel = new javax.swing.JPanel();
         mainLabel = new javax.swing.JLabel();
         empNameLabel = new javax.swing.JLabel();
         empIdLabel = new javax.swing.JLabel();
@@ -86,7 +86,7 @@ public class createEmployee extends javax.swing.JPanel {
         empPhoneTxt = new javax.swing.JTextField();
         empStartDatePicker = new com.toedter.calendar.JDateChooser();
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        createEmpPanel.setBackground(new java.awt.Color(51, 51, 51));
 
         mainLabel.setBackground(new java.awt.Color(255, 255, 255));
         mainLabel.setFont(new java.awt.Font("Charter", 0, 18)); // NOI18N
@@ -222,26 +222,26 @@ public class createEmployee extends javax.swing.JPanel {
         empStartDatePicker.setBackground(new java.awt.Color(255, 255, 255));
         empStartDatePicker.setForeground(new java.awt.Color(0, 0, 0));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout createEmpPanelLayout = new javax.swing.GroupLayout(createEmpPanel);
+        createEmpPanel.setLayout(createEmpPanelLayout);
+        createEmpPanelLayout.setHorizontalGroup(
+            createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createEmpPanelLayout.createSequentialGroup()
+                .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(createEmpPanelLayout.createSequentialGroup()
                         .addGap(151, 151, 151)
                         .addComponent(mainLabel))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(createEmpPanelLayout.createSequentialGroup()
+                        .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(createEmpPanelLayout.createSequentialGroup()
                                 .addGap(70, 70, 70)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(empPhnNumLabel)
                                     .addComponent(empEmailIdLabel)
                                     .addComponent(empPhotoLabel)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(createEmpPanelLayout.createSequentialGroup()
                                 .addGap(83, 83, 83)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(empIdLabel)
                                     .addComponent(empNameLabel)
                                     .addComponent(empAgeLabel)
@@ -251,7 +251,7 @@ public class createEmployee extends javax.swing.JPanel {
                                     .addComponent(empTeamInfoLabel)
                                     .addComponent(empPositionTitleLabel))))
                         .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(uploadImageBtn)
                             .addComponent(empNameTxt)
                             .addComponent(empIdTxt)
@@ -263,63 +263,63 @@ public class createEmployee extends javax.swing.JPanel {
                             .addComponent(empEmailTxt)
                             .addComponent(empGenderBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(empStartDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(createEmpPanelLayout.createSequentialGroup()
                         .addGap(83, 83, 83)
                         .addComponent(contactInfoLabel))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(createEmpPanelLayout.createSequentialGroup()
                         .addGap(169, 169, 169)
                         .addComponent(createEmpBtn)))
                 .addContainerGap(317, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        createEmpPanelLayout.setVerticalGroup(
+            createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createEmpPanelLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(mainLabel)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(empNameLabel)
                     .addComponent(empNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(empIdLabel)
                     .addComponent(empIdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(empAgeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(empAgeLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(empGenderLabel)
                     .addComponent(empGenderBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(empStartDateLabel)
                     .addComponent(empStartDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(empLevelLabel)
                     .addComponent(empLevelTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(empTeamInfoLabel)
                     .addComponent(empTeamInfoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(empPositionTitleLabel)
                     .addComponent(empPositionTitleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addComponent(contactInfoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(empPhnNumLabel)
                     .addComponent(empPhoneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(empEmailIdLabel)
                     .addComponent(empEmailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(empPhotoLabel)
                     .addComponent(uploadImageBtn))
                 .addGap(18, 18, 18)
@@ -332,12 +332,12 @@ public class createEmployee extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createEmpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(createEmpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -377,7 +377,8 @@ public class createEmployee extends javax.swing.JPanel {
             employeeObj.setEmailId(empEmailTxt.getText());
             
             employeeList.add(employeeObj);
-            
+            employeeObj = new EmployeeProfile();
+            System.out.println(employeeList.size());
             JOptionPane.showMessageDialog(this,"Employee Profile Created Successfully!");
             empNameTxt.setText("");
             empIdTxt.setText("");
@@ -390,7 +391,9 @@ public class createEmployee extends javax.swing.JPanel {
             empEmailTxt.setText("");
             empGenderBox.setSelectedItem(null);
             
+            
             for(EmployeeProfile em:employeeList){
+                
                 System.out.println(em.getCellNumber());                System.out.println(em.getEmailId());
                 System.out.println(em.getEmpGender());                System.out.println(em.getStartDate().toString());
                 System.out.println(em.getEmpId());
@@ -520,6 +523,7 @@ public class createEmployee extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel contactInfoLabel;
     private javax.swing.JButton createEmpBtn;
+    private javax.swing.JPanel createEmpPanel;
     private javax.swing.JLabel empAgeLabel;
     private javax.swing.JTextField empAgeTxt;
     private javax.swing.JLabel empEmailIdLabel;
@@ -541,7 +545,6 @@ public class createEmployee extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser empStartDatePicker;
     private javax.swing.JLabel empTeamInfoLabel;
     private javax.swing.JTextField empTeamInfoTxt;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel mainLabel;
     private javax.swing.JButton uploadImageBtn;
     // End of variables declaration//GEN-END:variables
