@@ -214,6 +214,11 @@ public class searchEmployee extends javax.swing.JPanel {
         updateEmployeeBtn.setBackground(new java.awt.Color(0, 153, 204));
         updateEmployeeBtn.setForeground(new java.awt.Color(255, 255, 255));
         updateEmployeeBtn.setText("Update Employee");
+        updateEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateEmployeeBtnActionPerformed(evt);
+            }
+        });
 
         deleteEmpBtn.setBackground(new java.awt.Color(0, 153, 204));
         deleteEmpBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -455,6 +460,22 @@ public class searchEmployee extends javax.swing.JPanel {
             Logger.getLogger(searchEmployee.class.getName()).log(Level.SEVERE, "Error in Displaying Image", ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void updateEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEmployeeBtnActionPerformed
+        // TODO add your handling code here:
+        searchedEmployee.setEmpName(empNameTxt.getText());
+        //searchedEmployee.setEmpId(empIdTxt.getText());
+        searchedEmployee.setEmpAge(Integer.parseInt(empAgeTxt.getText()));
+        searchedEmployee.setEmpGender(empGenderBox.getSelectedItem().toString());
+        searchedEmployee.setStartDate(empStartDatePicker.getDate());
+        searchedEmployee.setLevel(empLevelTxt.getText());
+        searchedEmployee.setTeamInfo(empTeamInfoTxt.getText());
+        searchedEmployee.setPositionTitle(empPositionTitleTxt.getText());
+        searchedEmployee.setCellNumber(empPhoneTxt.getText());
+        searchedEmployee.setEmailId(empEmailTxt.getText());
+
+        JOptionPane.showMessageDialog(this, "Employee Profile Updated");
+    }//GEN-LAST:event_updateEmployeeBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
