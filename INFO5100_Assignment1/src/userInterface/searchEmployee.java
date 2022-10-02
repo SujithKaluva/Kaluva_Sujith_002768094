@@ -4,6 +4,7 @@
  */
 package userInterface;
 
+import com.toedter.calendar.JDateChooser;
 import employeeDetails.EmployeeProfile;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -16,11 +17,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import static userInterface.createEmployee.employeeList;
 
 /**
  *
@@ -33,8 +38,19 @@ public class searchEmployee extends javax.swing.JPanel {
      */
     ArrayList<EmployeeProfile> employeeList = new ArrayList<EmployeeProfile>(List.copyOf(createEmployee.employeeList));
     EmployeeProfile searchedEmployee;
+
     public searchEmployee() {
         initComponents();
+        empNameTxt.setName("empName");
+        empIdTxt.setName("empId");
+        empAgeTxt.setName("empAge");
+        empGenderBox.setName("empGender");
+        empStartDatePicker.setName("startDate");
+        empLevelTxt.setName("level");
+        empTeamInfoTxt.setName("teamInfo");
+        empPositionTitleTxt.setName("positionTitle");
+        empPhoneTxt.setName("cellNumber");
+        empEmailTxt.setName("emailId");
     }
 
     /**
@@ -437,7 +453,7 @@ public class searchEmployee extends javax.swing.JPanel {
                 empPositionTitleTxt.setText(emp.getPositionTitle());
                 empPhoneTxt.setText(emp.getCellNumber());
                 empEmailTxt.setText(emp.getEmailId());
-                
+
                 /*
                 BufferedImage photo = ImageIO.read(new ByteArrayInputStream(emp.getPhoto()));
                 JFrame viewImgFrame = new JFrame();
@@ -446,7 +462,7 @@ public class searchEmployee extends javax.swing.JPanel {
                 viewImgFrame.add(label);
                 viewImgFrame.pack();
                 viewImgFrame.setVisible(true);
-                */
+                 */
                 recordFound = true;
                 break;
             }
@@ -454,7 +470,7 @@ public class searchEmployee extends javax.swing.JPanel {
         }
         if (!recordFound) {
             JOptionPane.showMessageDialog(this, "Record not found");
-            
+
             empNameTxt.setText("");
             empIdTxt.setText("");
             empAgeTxt.setText("");
@@ -471,10 +487,9 @@ public class searchEmployee extends javax.swing.JPanel {
     private void viewPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPhotoActionPerformed
         try {
             // TODO add your handling code here:
-            if(searchedEmployee==null || searchedEmployee.getPhoto()==null || searchedEmployee.getPhoto().length==0){
+            if (searchedEmployee == null || searchedEmployee.getPhoto() == null || searchedEmployee.getPhoto().length == 0) {
                 JOptionPane.showMessageDialog(this, "Employee Image Unavailable");
-            }
-            else{
+            } else {
                 BufferedImage photo = ImageIO.read(new ByteArrayInputStream(searchedEmployee.getPhoto()));
                 JFrame viewImgFrame = new JFrame();
                 ImageIcon icon = new ImageIcon(photo);
@@ -487,28 +502,91 @@ public class searchEmployee extends javax.swing.JPanel {
             Logger.getLogger(searchEmployee.class.getName()).log(Level.SEVERE, "Error in Displaying Image", ex);
         }
     }//GEN-LAST:event_viewPhotoActionPerformed
+    public boolean validateData(JComponent input) {
+        String name = input.getName();
+        String errorMsg = "";
+        boolean raiseError = false;
+        String text = ((JTextField) input).getText().trim();
+        if (text == null || text.isEmpty()) {
+            raiseError = true;
+            errorMsg = String.format("Please enter a value. The value for %s cannot be empty", name);
+        } else {
+            switch (name) {
+                case "empName":
+                    if (!text.matches("^[a-zA-z ]*$")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter valid values for %s", name);
+                    }
+                    break;
+                case "cellNumber":
+                    if (!text.matches("^[0-9]{10}")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter a valid %s", name);
+                    }
+                    break;
+                case "emailId":
+                    if (!text.matches("^(.+)@(.+)$")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter a valid %s", name);
+                    }
+                    break;
 
+                default:
+                    break;
+            }
+        }
+        if (raiseError) {
+            JOptionPane.showMessageDialog(this, errorMsg);
+            return false;
+        }
+        return true;
+    }
     private void updateEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEmployeeBtnActionPerformed
         // TODO add your handling code here:
-        searchedEmployee.setEmpName(empNameTxt.getText());
-        //searchedEmployee.setEmpId(empIdTxt.getText());
-        searchedEmployee.setEmpAge(Integer.parseInt(empAgeTxt.getText()));
-        searchedEmployee.setEmpGender(empGenderBox.getSelectedItem().toString());
-        searchedEmployee.setStartDate(empStartDatePicker.getDate());
-        searchedEmployee.setLevel(empLevelTxt.getText());
-        searchedEmployee.setTeamInfo(empTeamInfoTxt.getText());
-        searchedEmployee.setPositionTitle(empPositionTitleTxt.getText());
-        searchedEmployee.setCellNumber(empPhoneTxt.getText());
-        searchedEmployee.setEmailId(empEmailTxt.getText());
+        JTextField[] VARIABLE_CONSTANTS = {empAgeTxt, empEmailTxt, empIdTxt, empLevelTxt, empNameTxt, empPhoneTxt, empPositionTitleTxt, empTeamInfoTxt};
+        JComboBox genderInfo = empGenderBox;
+        JDateChooser strtDt = empStartDatePicker;
 
-        JOptionPane.showMessageDialog(this, "Employee Profile Updated");
+        boolean imageUploaded = false;
+        if (searchedEmployee.getPhoto() == null || searchedEmployee.getPhoto().length == 0) {
+            imageUploaded = false;
+        } else {
+            imageUploaded = true;
+        }
+
+        boolean validated = false;
+        for (JTextField field : VARIABLE_CONSTANTS) {
+            if (!validateData(field)) {
+                validated = false;
+                break;
+            } else {
+                validated = true;
+                System.out.println("Validated");
+            }
+        }
+        if(validated && imageUploaded){
+            searchedEmployee.setEmpName(empNameTxt.getText());
+            searchedEmployee.setEmpAge(Integer.parseInt(empAgeTxt.getText()));
+            searchedEmployee.setEmpGender(empGenderBox.getSelectedItem().toString());
+            searchedEmployee.setStartDate(empStartDatePicker.getDate());
+            searchedEmployee.setLevel(empLevelTxt.getText());
+            searchedEmployee.setTeamInfo(empTeamInfoTxt.getText());
+            searchedEmployee.setPositionTitle(empPositionTitleTxt.getText());
+            searchedEmployee.setCellNumber(empPhoneTxt.getText());
+            searchedEmployee.setEmailId(empEmailTxt.getText());
+
+            JOptionPane.showMessageDialog(this, "Employee Profile Updated");
+        }
+        else if(!imageUploaded){
+            JOptionPane.showMessageDialog(this, "Please Upload the Image");
+        }
     }//GEN-LAST:event_updateEmployeeBtnActionPerformed
 
     private void deleteEmpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteEmpBtnActionPerformed
         // TODO add your handling code here:
         if (searchedEmployee.getEmpId() != null && searchedEmployee.getEmpId() != "") {
             createEmployee.employeeList.remove(searchedEmployee);
-            
+
             empNameTxt.setText("");
             empIdTxt.setText("");
             empAgeTxt.setText("");
@@ -519,7 +597,7 @@ public class searchEmployee extends javax.swing.JPanel {
             empPhoneTxt.setText("");
             empEmailTxt.setText("");
             empGenderBox.setSelectedItem(null);
-            
+
             JOptionPane.showMessageDialog(this, "Employee Profile Deleted");
         } else {
             JOptionPane.showMessageDialog(this, "Employee Profile Not Available");
@@ -528,12 +606,12 @@ public class searchEmployee extends javax.swing.JPanel {
 
     private void updatePhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePhotoActionPerformed
         // TODO add your handling code here:
-        if(searchedEmployee == null) {
-            JOptionPane.showMessageDialog(this,"Employee Not Found");
+        if (searchedEmployee == null) {
+            JOptionPane.showMessageDialog(this, "Employee Not Found");
         } else {
             JFileChooser fileUploader = new JFileChooser();
             FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                    "JPG & GIF Images", "jpg", "gif","jpeg");
+                    "JPG & GIF Images", "jpg", "gif", "jpeg");
             fileUploader.setFileFilter(filter);
             fileUploader.setDialogTitle("Choose Your Photo");
             fileUploader.setFileSelectionMode(JFileChooser.FILES_ONLY);

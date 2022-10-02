@@ -56,7 +56,7 @@ public class EmployeeForm extends javax.swing.JFrame {
             .addGroup(rightPanelLayout.createSequentialGroup()
                 .addGap(158, 158, 158)
                 .addComponent(mainLabel)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(350, Short.MAX_VALUE))
         );
         rightPanelLayout.setVerticalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
