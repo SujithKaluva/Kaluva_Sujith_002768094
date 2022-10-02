@@ -16,16 +16,20 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -42,71 +46,67 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
+                          <Component id="mainLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
-                                  <Component id="createEmpLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
-                                  <Component id="createEmpBtn" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Component id="contactInfoLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="empPhnNumLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="empEmailIdLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="empPhotoLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="empIdLabel" min="-2" max="-2" attributes="0"/>
-                                              <Component id="empNameLabel" min="-2" max="-2" attributes="0"/>
-                                              <Component id="empAgeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="empGenderLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="empStartDateLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="empLevelLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="empTeamInfoLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="empPositionTitleLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="empPhnNumLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="empEmailIdLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="empPhotoLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="uploadImageBtn" min="-2" max="-2" attributes="0"/>
-                                      <Component id="empNameTxt" min="-2" pref="195" max="-2" attributes="0"/>
-                                      <Component id="empIdTxt" min="-2" pref="195" max="-2" attributes="0"/>
-                                      <Component id="empAgeTxt" min="-2" pref="195" max="-2" attributes="0"/>
-                                      <Component id="empLevelTxt" min="-2" pref="195" max="-2" attributes="0"/>
-                                      <Component id="empGenderBox" min="-2" max="-2" attributes="0"/>
-                                      <Component id="empTeamInfoTxt" min="-2" pref="195" max="-2" attributes="0"/>
-                                      <Component id="empPositionTitleTxt" min="-2" pref="195" max="-2" attributes="0"/>
-                                      <Component id="empPhoneTxt" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
-                                      <Component id="empEmailTxt" min="-2" pref="195" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="empIdLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="empNameLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="empAgeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="empGenderLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="empStartDateLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="empLevelLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="empTeamInfoLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="empPositionTitleLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="uploadImageBtn" min="-2" max="-2" attributes="0"/>
+                              <Component id="empNameTxt" max="32767" attributes="0"/>
+                              <Component id="empIdTxt" max="32767" attributes="0"/>
+                              <Component id="empAgeTxt" max="32767" attributes="0"/>
+                              <Component id="empLevelTxt" max="32767" attributes="0"/>
+                              <Component id="empTeamInfoTxt" max="32767" attributes="0"/>
+                              <Component id="empPositionTitleTxt" max="32767" attributes="0"/>
+                              <Component id="empPhoneTxt" alignment="0" max="32767" attributes="0"/>
+                              <Component id="empEmailTxt" max="32767" attributes="0"/>
+                              <Component id="empGenderBox" alignment="0" max="32767" attributes="0"/>
+                              <Component id="empStartDatePicker" pref="195" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
-                          <Component id="mainLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                          <Component id="contactInfoLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                          <Component id="createEmpBtn" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="244" max="32767" attributes="0"/>
+                  <EmptySpace pref="317" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   <Component id="mainLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="createEmpLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="empNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -128,7 +128,10 @@
                       <Component id="empGenderBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="empStartDateLabel" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="empStartDateLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="empStartDatePicker" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="empLevelLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -163,23 +166,12 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="createEmpBtn" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <EmptySpace pref="38" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="createEmpLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Charter" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Create Employee"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="mainLabel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -191,7 +183,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Employee Management System"/>
+            <Property name="text" type="java.lang.String" value="Create Employee"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="empNameLabel">
@@ -312,6 +304,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Upload Image"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="uploadImageBtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="createEmpBtn">
           <Properties>
@@ -450,6 +445,16 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="empPhoneTxtActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="empStartDatePicker">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package userInterface;
-
+import java.util.*;
+import employeeDetails.EmployeeProfile;
 /**
  *
  * @author sujithkaluva
@@ -13,8 +14,10 @@ public class EmployeeForm extends javax.swing.JFrame {
     /**
      * Creates new form EmployeeForm
      */
+    EmployeeProfile emp;
     public EmployeeForm() {
         initComponents();
+        emp = new EmployeeProfile();
     }
 
     /**
@@ -162,7 +165,7 @@ public class EmployeeForm extends javax.swing.JFrame {
 
     private void createEmpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEmpBtnActionPerformed
         // TODO add your handling code here:
-        createEmployee createEmp = new createEmployee();
+        createEmployee createEmp = new createEmployee(emp);
         mainPanel.setRightComponent(createEmp);
     }//GEN-LAST:event_createEmpBtnActionPerformed
 

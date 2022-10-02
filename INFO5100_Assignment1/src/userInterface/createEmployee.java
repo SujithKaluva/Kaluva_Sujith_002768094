@@ -4,6 +4,21 @@
  */
 package userInterface;
 
+import com.toedter.calendar.JDateChooser;
+import employeeDetails.EmployeeProfile;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import javax.swing.JTextField;
+import java.util.*;
+import javax.imageio.ImageIO;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author sujithkaluva
@@ -13,8 +28,26 @@ public class createEmployee extends javax.swing.JPanel {
     /**
      * Creates new form createEmployee
      */
+    
+    static ArrayList<EmployeeProfile> employeeList = new ArrayList<EmployeeProfile>();
+    EmployeeProfile employeeObj = new EmployeeProfile();
+    
     public createEmployee() {
         initComponents();
+    }
+
+    public createEmployee(EmployeeProfile emp) {
+        initComponents();
+        empNameTxt.setName("empName");
+        empIdTxt.setName("empId");
+        empAgeTxt.setName("empAge");
+        empGenderBox.setName("empGender");
+        empStartDatePicker.setName("startDate");
+        empLevelTxt.setName("level");
+        empTeamInfoTxt.setName("teamInfo");
+        empPositionTitleTxt.setName("positionTitle");
+        empPhoneTxt.setName("cellNumber");
+        empEmailTxt.setName("emailId");
     }
 
     /**
@@ -27,7 +60,6 @@ public class createEmployee extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        createEmpLabel = new javax.swing.JLabel();
         mainLabel = new javax.swing.JLabel();
         empNameLabel = new javax.swing.JLabel();
         empIdLabel = new javax.swing.JLabel();
@@ -52,17 +84,14 @@ public class createEmployee extends javax.swing.JPanel {
         empPositionTitleTxt = new javax.swing.JTextField();
         empEmailTxt = new javax.swing.JTextField();
         empPhoneTxt = new javax.swing.JTextField();
+        empStartDatePicker = new com.toedter.calendar.JDateChooser();
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-
-        createEmpLabel.setFont(new java.awt.Font("Charter", 0, 14)); // NOI18N
-        createEmpLabel.setForeground(new java.awt.Color(255, 255, 255));
-        createEmpLabel.setText("Create Employee");
 
         mainLabel.setBackground(new java.awt.Color(255, 255, 255));
         mainLabel.setFont(new java.awt.Font("Charter", 0, 18)); // NOI18N
         mainLabel.setForeground(new java.awt.Color(255, 255, 255));
-        mainLabel.setText("Employee Management System");
+        mainLabel.setText("Create Employee");
 
         empNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         empNameLabel.setText("Name");
@@ -107,6 +136,11 @@ public class createEmployee extends javax.swing.JPanel {
         uploadImageBtn.setBackground(new java.awt.Color(0, 153, 204));
         uploadImageBtn.setForeground(new java.awt.Color(255, 255, 255));
         uploadImageBtn.setText("Upload Image");
+        uploadImageBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uploadImageBtnActionPerformed(evt);
+            }
+        });
 
         createEmpBtn.setBackground(new java.awt.Color(0, 153, 204));
         createEmpBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,6 +219,9 @@ public class createEmployee extends javax.swing.JPanel {
             }
         });
 
+        empStartDatePicker.setBackground(new java.awt.Color(255, 255, 255));
+        empStartDatePicker.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -192,56 +229,53 @@ public class createEmployee extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
+                        .addGap(151, 151, 151)
+                        .addComponent(mainLabel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(115, 115, 115)
-                                .addComponent(createEmpLabel))
+                                .addGap(70, 70, 70)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(empPhnNumLabel)
+                                    .addComponent(empEmailIdLabel)
+                                    .addComponent(empPhotoLabel)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(131, 131, 131)
-                                .addComponent(createEmpBtn))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(contactInfoLabel)
-                                        .addComponent(empPhnNumLabel)
-                                        .addComponent(empEmailIdLabel)
-                                        .addComponent(empPhotoLabel))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(46, 46, 46)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(empIdLabel)
-                                            .addComponent(empNameLabel)
-                                            .addComponent(empAgeLabel)
-                                            .addComponent(empGenderLabel)
-                                            .addComponent(empStartDateLabel)
-                                            .addComponent(empLevelLabel)
-                                            .addComponent(empTeamInfoLabel)
-                                            .addComponent(empPositionTitleLabel))))
-                                .addGap(35, 35, 35)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(uploadImageBtn)
-                                    .addComponent(empNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(empIdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(empAgeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(empLevelTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(empGenderBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(empTeamInfoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(empPositionTitleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(empPhoneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(empEmailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(83, 83, 83)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(empIdLabel)
+                                    .addComponent(empNameLabel)
+                                    .addComponent(empAgeLabel)
+                                    .addComponent(empGenderLabel)
+                                    .addComponent(empStartDateLabel)
+                                    .addComponent(empLevelLabel)
+                                    .addComponent(empTeamInfoLabel)
+                                    .addComponent(empPositionTitleLabel))))
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(uploadImageBtn)
+                            .addComponent(empNameTxt)
+                            .addComponent(empIdTxt)
+                            .addComponent(empAgeTxt)
+                            .addComponent(empLevelTxt)
+                            .addComponent(empTeamInfoTxt)
+                            .addComponent(empPositionTitleTxt)
+                            .addComponent(empPhoneTxt)
+                            .addComponent(empEmailTxt)
+                            .addComponent(empGenderBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(empStartDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(mainLabel)))
-                .addContainerGap(244, Short.MAX_VALUE))
+                        .addGap(83, 83, 83)
+                        .addComponent(contactInfoLabel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(createEmpBtn)))
+                .addContainerGap(317, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addGap(17, 17, 17)
                 .addComponent(mainLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(createEmpLabel)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(empNameLabel)
@@ -259,7 +293,9 @@ public class createEmployee extends javax.swing.JPanel {
                     .addComponent(empGenderLabel)
                     .addComponent(empGenderBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(empStartDateLabel)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(empStartDateLabel)
+                    .addComponent(empStartDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(empLevelLabel)
@@ -288,28 +324,141 @@ public class createEmployee extends javax.swing.JPanel {
                     .addComponent(uploadImageBtn))
                 .addGap(18, 18, 18)
                 .addComponent(createEmpBtn)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void createEmpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEmpBtnActionPerformed
         // TODO add your handling code here:
+        JTextField[] VARIABLE_CONSTANTS = {empAgeTxt, empEmailTxt, empIdTxt, empLevelTxt, empNameTxt, empPhoneTxt, empPositionTitleTxt, empTeamInfoTxt};
+        JComboBox genderInfo = empGenderBox;
+        JDateChooser strtDt = empStartDatePicker;
+        
+        boolean imageUploaded = false;
+        if(employeeObj.getPhoto()==null || employeeObj.getPhoto().length == 0){
+            imageUploaded = false;
+        }
+        else imageUploaded = true;
+        
+        boolean validated = false;
+        for (JTextField field : VARIABLE_CONSTANTS) {
+            if (!validateData(field)) {
+                validated = false;
+                break;
+            } else {
+                validated = true;
+                System.out.println("Validated");
+            }
+        }
+        
+        if(validated && imageUploaded){
+            employeeObj.setEmpName(empNameTxt.getText());
+            employeeObj.setEmpId(empIdTxt.getText());
+            employeeObj.setEmpAge(Integer.parseInt(empAgeTxt.getText()));
+            employeeObj.setEmpGender(empGenderBox.getSelectedItem().toString());
+            employeeObj.setStartDate(empStartDatePicker.getDate());
+            employeeObj.setLevel(empLevelTxt.getText());
+            employeeObj.setTeamInfo(empTeamInfoTxt.getText());
+            employeeObj.setPositionTitle(empPositionTitleTxt.getText());
+            employeeObj.setCellNumber(empPhoneTxt.getText());
+            employeeObj.setEmailId(empEmailTxt.getText());
+            
+            employeeList.add(employeeObj);
+            
+            JOptionPane.showMessageDialog(this,"Employee Profile Created Successfully!");
+            empNameTxt.setText("");
+            empIdTxt.setText("");
+            empAgeTxt.setText("");
+            empStartDatePicker.setDate(null);
+            empLevelTxt.setText("");
+            empTeamInfoTxt.setText("");
+            empPositionTitleTxt.setText("");
+            empPhoneTxt.setText("");
+            empEmailTxt.setText("");
+            empGenderBox.setSelectedItem(null);
+            
+            for(EmployeeProfile em:employeeList){
+                System.out.println(em.getCellNumber());                System.out.println(em.getEmailId());
+                System.out.println(em.getEmpGender());                System.out.println(em.getStartDate().toString());
+            }
+        }
+        else if(!imageUploaded){
+            JOptionPane.showMessageDialog(this, "Please Upload the Image");
+        }
     }//GEN-LAST:event_createEmpBtnActionPerformed
 
+    public boolean validateData(JComponent input) {
+        String name = input.getName();
+        String errorMsg = "";
+        boolean raiseError = false;
+        String text = ((JTextField) input).getText().trim();
+        if (text == null || text.isEmpty()) {
+            raiseError = true;
+            errorMsg = String.format("Please enter a value. The value for %s cannot be empty", name);
+        } 
+        else {
+            switch (name) {
+                case "empName":
+                    if (!text.matches("^[a-zA-z]+$")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter valid values for %s", name);
+                    }
+                    break;
+                case "cellNumber":
+                    if (!text.matches("^[0-9]{10}")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter a valid %s", name);
+                    }
+                    break;
+                case "empId":
+                    for (EmployeeProfile emp : employeeList) {
+                        if (String.valueOf(emp.getEmpId()).equals(text)) {
+                            raiseError = true;
+                            errorMsg = String.format("Employee ID Exists. Please Try Again!", name);
+                            break;
+                        }
+                    }
+                    break;
+//                case "sdate":
+//                    if (!text.matches("^((0[0-9]||1[0-2])/[0-2][0-9]||3[0-1])/([0-9][0-9])?[0-9][0-9]$")) {
+//                        raiseError = true;
+//                        errorMsg = String.format("Please enter a valid %s with the format MM/DD/YYYY", name);
+//                    }
+//                    break;
+                case "emailId":
+                    if (!text.matches("^(.+)@(.+)$")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter a valid %s", name);
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+        if (raiseError) {
+            JOptionPane.showMessageDialog(this, errorMsg);
+            return false;
+        }
+        return true;
+    }
     private void empNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empNameTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_empNameTxtActionPerformed
@@ -342,11 +491,38 @@ public class createEmployee extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_empPhoneTxtActionPerformed
 
+    private void uploadImageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadImageBtnActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileUploader = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+        "JPG & GIF Images", "jpg","jpeg", "gif");
+        fileUploader.setFileFilter(filter);
+        fileUploader.setDialogTitle("Choose Your Photo");
+        fileUploader.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int returnval = fileUploader.showOpenDialog(this);
+        if (returnval == JFileChooser.APPROVE_OPTION)
+        {
+            File uploadedFile = fileUploader.getSelectedFile();
+            BufferedImage bufferedImageObj;
+            try {
+                bufferedImageObj = ImageIO.read(uploadedFile);
+                ByteArrayOutputStream byteArrayOs = new ByteArrayOutputStream();
+                ImageIO.write(bufferedImageObj, "jpg", byteArrayOs);
+                byte[] photoBytes = byteArrayOs.toByteArray();
+                employeeObj.setPhoto(photoBytes);
+                
+                JOptionPane.showMessageDialog(fileUploader, "Photo Uploaded Successfully");
+            } catch(IOException e) {
+               e.printStackTrace();
+               JOptionPane.showMessageDialog(fileUploader, "Error while uploading Photo");
+            }
+        }
+    }//GEN-LAST:event_uploadImageBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel contactInfoLabel;
     private javax.swing.JButton createEmpBtn;
-    private javax.swing.JLabel createEmpLabel;
     private javax.swing.JLabel empAgeLabel;
     private javax.swing.JTextField empAgeTxt;
     private javax.swing.JLabel empEmailIdLabel;
@@ -365,6 +541,7 @@ public class createEmployee extends javax.swing.JPanel {
     private javax.swing.JLabel empPositionTitleLabel;
     private javax.swing.JTextField empPositionTitleTxt;
     private javax.swing.JLabel empStartDateLabel;
+    private com.toedter.calendar.JDateChooser empStartDatePicker;
     private javax.swing.JLabel empTeamInfoLabel;
     private javax.swing.JTextField empTeamInfoTxt;
     private javax.swing.JPanel jPanel1;

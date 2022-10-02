@@ -4,6 +4,7 @@
  */
 
 package employeeDetails;
+import java.util.*;
 
 /*
  *
@@ -15,9 +16,9 @@ public class EmployeeProfile {
     
     private String empName;
     private String empId;
-    private String empAge;
+    private Integer empAge;
     private String empGender;
-    private String startDate;
+    private Date startDate;
     private String level;
     private String teamInfo;
     private String positionTitle;
@@ -41,11 +42,11 @@ public class EmployeeProfile {
         this.empId = empId;
     }
 
-    public String getEmpAge() {
+    public Integer getEmpAge() {
         return empAge;
     }
 
-    public void setEmpAge(String empAge) {
+    public void setEmpAge(Integer empAge) {
         this.empAge = empAge;
     }
 
@@ -57,11 +58,11 @@ public class EmployeeProfile {
         this.empGender = empGender;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
