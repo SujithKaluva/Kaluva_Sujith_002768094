@@ -59,8 +59,8 @@
                                       <Component id="empAgeTxt" alignment="0" max="32767" attributes="0"/>
                                       <Component id="empLevelTxt" alignment="0" max="32767" attributes="0"/>
                                       <Component id="empTeamInfoTxt" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="empGenderBox" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="empStartDatePicker" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
+                                      <Component id="empGenderBox" alignment="0" pref="195" max="32767" attributes="0"/>
+                                      <Component id="empStartDatePicker" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -78,8 +78,13 @@
                                   <Component id="empPositionTitleTxt" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="updateEmployeeBtn" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="deleteEmpBtn" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="1" attributes="0">
@@ -93,12 +98,6 @@
                                               </Group>
                                           </Group>
                                           <Component id="contactInfoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="updateEmployeeBtn" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="deleteEmpBtn" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -119,7 +118,7 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="408" max="32767" attributes="0"/>
+                          <EmptySpace pref="480" max="32767" attributes="0"/>
                           <Component id="empIdLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="empIdTxt" min="-2" pref="195" max="-2" attributes="0"/>
@@ -161,10 +160,10 @@
                               <Component id="empGenderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="empGenderBox" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="empStartDateLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="empStartDatePicker" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="empStartDateLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="empStartDatePicker" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -402,16 +401,6 @@
             <Property name="text" type="java.lang.String" value="Gender"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="empStartDatePicker">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="empLevelLabel">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -537,6 +526,8 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updatePhotoActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="empStartDatePicker">
         </Component>
       </SubComponents>
     </Container>
