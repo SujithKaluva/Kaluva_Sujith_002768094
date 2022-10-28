@@ -17,6 +17,9 @@ public class House {
     private City city;
     private Community community;
 
+    public House() {
+    }
+
     public String getAddressLine1() {
         return addressLine1;
     }

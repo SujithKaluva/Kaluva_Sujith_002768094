@@ -11,4 +11,13 @@ package Model;
 public class Community {
     
     String community;
+
+    public String getCommunity() {
+        return community;
+    }
+
+    public void setCommunity(String community) {
+        this.community = community;
+    }
+    
 }

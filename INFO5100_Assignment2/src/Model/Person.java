@@ -4,6 +4,7 @@
  */
 package Model;
 
+import Data.*;
 import java.util.*;
 
 /**
@@ -21,9 +22,23 @@ public class Person {
     private String gender;
     private long phoneNumber;
     private House house;
+    private String password;
+    Ecosystem ecoSystem = Ecosystem.getInstance();
 
-    public Person(String personId, String firstName, String lastName, Date dateOfBirth, String emailId, String gender, long phoneNumber, House house) {
-        this.personId = personId;
+    public Person() {
+        
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Person(String firstName, String lastName, Date dateOfBirth, String emailId, String gender, long phoneNumber, House house, String password) {
+        //this.personId = personId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -31,6 +46,13 @@ public class Person {
         this.gender = gender;
         this.phoneNumber = phoneNumber;
         this.house = house;
+        this.password = password;
+        this.personId = "person"+this.getPersonCounter();
+        personCounter++;
+        ecoSystem.getPersonDirectory().addPerson(this);
+        //Ecosystem.personDirectory.addPerson(this);
+        //eco.getPersonDirectory().addPerson(this);
+        
     }
 
     public House getHouse() {
@@ -49,8 +71,9 @@ public class Person {
         return personCounter;
     }
 
-    public void setPersonId(String personId) {
+    public void setPersonId() {
         this.personId = "person"+this.getPersonCounter();
+        personCounter++;
     }
 
     public String getFirstName() {

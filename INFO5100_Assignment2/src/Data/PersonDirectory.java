@@ -14,8 +14,8 @@ public class PersonDirectory {
     
     private ArrayList<Person> personList;
 
-    public PersonDirectory(ArrayList<Person> personList) {
-        this.personList = new ArrayList<>();
+    public PersonDirectory() {
+        this.personList = new ArrayList<Person>();
     }
 
     public ArrayList<Person> getPersonList() {

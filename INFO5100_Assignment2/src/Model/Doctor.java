@@ -4,6 +4,7 @@
  */
 package Model;
 
+import Data.Ecosystem;
 import java.util.Date;
 
 /**
@@ -21,8 +22,8 @@ public class Doctor extends Person{
     private int experience;
     private Hospital hospital;
 
-    public Doctor(Person person, String doctorId, String specialisation, String degree, int experience, Hospital hospital, String personId, String firstName, String lastName, Date dateOfBirth, String emailId, String gender, long phoneNumber, House house) {
-        super(personId, firstName, lastName, dateOfBirth, emailId, gender, phoneNumber, house);
+    public Doctor(Person person, String doctorId, String specialisation, String degree, int experience, Hospital hospital, String personId, String firstName, String lastName, Date dateOfBirth, String emailId, String gender, long phoneNumber, House house, String password) {
+        super(firstName, lastName, dateOfBirth, emailId, gender, phoneNumber, house, password);
         this.person = person;
         this.doctorId = doctorId;
         this.specialisation = specialisation;

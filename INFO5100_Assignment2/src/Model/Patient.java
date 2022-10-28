@@ -4,6 +4,7 @@
  */
 package Model;
 
+import Data.Ecosystem;
 import java.util.Date;
 
 /**
@@ -14,10 +15,13 @@ public class Patient extends Person {
     
     private static int patientCounter = 1;
     private String patientId;
+    Ecosystem ecoSystem = Ecosystem.getInstance();
 
-    public Patient(String patientId, String personId, String firstName, String lastName, Date dateOfBirth, String emailId, String gender, long phoneNumber, House house) {
-        super(personId, firstName, lastName, dateOfBirth, emailId, gender, phoneNumber, house);
-        this.patientId = patientId;
+    public Patient(String firstName, String lastName, Date dateOfBirth, String emailId, String gender, long phoneNumber, House house,String password) {
+        super(firstName, lastName, dateOfBirth, emailId, gender, phoneNumber, house, password);
+        this.patientId = "patient"+patientCounter;
+        patientCounter++;
+        ecoSystem.getPatientDirectory().addPatient(this);
     }
     
 }
