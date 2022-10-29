@@ -15,12 +15,22 @@ public class Ecosystem {
     private PatientDirectory patientDirectory;
     private EncounterHistory encounterHistory;
     private DoctorDirectory doctorDirectory;
+    private SystemAdminDirectory systemAdminDirectory;
 
     public Ecosystem(){
         personDirectory = new PersonDirectory();
         patientDirectory = new PatientDirectory();
         encounterHistory = new EncounterHistory();
         doctorDirectory = new DoctorDirectory();
+        systemAdminDirectory = new SystemAdminDirectory();
+    }
+
+    public SystemAdminDirectory getSystemAdminDirectory() {
+        return systemAdminDirectory;
+    }
+
+    public void setSystemAdminDirectory(SystemAdminDirectory systemAdminDirectory) {
+        this.systemAdminDirectory = systemAdminDirectory;
     }
     
     public static Ecosystem getInstance() {

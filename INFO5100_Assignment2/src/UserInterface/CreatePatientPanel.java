@@ -10,7 +10,11 @@ import Model.Community;
 import Model.Person;
 import Model.House;
 import Model.Patient;
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 /**
@@ -432,30 +436,108 @@ public class CreatePatientPanel extends javax.swing.JPanel {
 
     private void createPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPatientActionPerformed
         // TODO add your handling code here:
-        
-        Community community = new Community();
-        community.setCommunity(this.community.getSelectedItem().toString());
-        
-        City city = new City();
-        city.setCity(this.city.getSelectedItem().toString());
-        city.setCommunityName(community);
-        
-        House house = new House();
-        house.setAddressLine1(addressLine1.getText());
-        house.setAddressLine2(addressLine2.getText());
-        house.setState(state.getText());
-        house.setZipCode(Integer.valueOf(zipCode.getText()));
-        
-        Patient patient = new Patient(firstName.getText(),lastName.getText(),dateOfBirth.getDate(),eMailId.getText(),gender.getSelectedItem().toString(),Long.parseLong(phone.getText()),house,passWord.getText());
-        System.out.println("Patient Size"+ecoSystem.getPatientDirectory().getPatientList().size());        
-        System.out.println("Person Size"+ecoSystem.getPersonDirectory().getPersonList().size());
+        boolean validated = false;
+        boolean validatedOtherFields = false;
+        String selectedGender = gender.getSelectedItem().toString();
+        String selectedCity = city.getSelectedItem().toString();
+        String selectedCommunity = community.getSelectedItem().toString();
+        JDateChooser strtDt = dateOfBirth;
+        if(!selectedCity.isEmpty() && !selectedCommunity.isEmpty() && !selectedGender.isEmpty() && strtDt!=null){
+            validatedOtherFields = true;
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "All Fields are Mandatory!");
+        }
+        JTextField[] VARIABLE_CONSTANTS = {firstName, lastName, eMailId, phone, addressLine1, addressLine2,state,zipCode,passWord};
+        for (JTextField field : VARIABLE_CONSTANTS) {
+            if (!validateData(field)) {
+                validated = false;
+                break;
+            } else {
+                validated = true;
+                System.out.println("Validated");
+            }
+        }
 
-        
-        Home home = new Home();
-        ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
-        home.setVisible(true);
+        if (validated && validatedOtherFields) {
+            Community community = new Community();
+            community.setCommunity(this.community.getSelectedItem().toString());
+
+            City city = new City();
+            city.setCity(this.city.getSelectedItem().toString());
+            city.setCommunityName(community);
+
+            House house = new House();
+            house.setAddressLine1(addressLine1.getText());
+            house.setAddressLine2(addressLine2.getText());
+            house.setState(state.getText());
+            house.setZipCode(Integer.valueOf(zipCode.getText()));
+
+            Patient patient = new Patient(firstName.getText(), lastName.getText(), dateOfBirth.getDate(), eMailId.getText(), gender.getSelectedItem().toString(), Long.parseLong(phone.getText()), house, passWord.getText());
+            System.out.println("Patient Size" + ecoSystem.getPatientDirectory().getPatientList().size());
+            System.out.println("Person Size" + ecoSystem.getPersonDirectory().getPersonList().size());
+
+            //back to login page
+            Home home = new Home();
+            ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
+            home.setVisible(true);
+        }
+        else{
+            //JOptionPane.showMessageDialog(this, "All Fields are Mandatory!");
+        }
     }//GEN-LAST:event_createPatientActionPerformed
 
+    public boolean validateData(JComponent input) {
+        String name = input.getName();
+        String errorMsg = "";
+        boolean raiseError = false;
+        String text = ((JTextField) input).getText().trim();
+        if (text == null || text.isEmpty()) {
+            raiseError = true;
+            errorMsg = String.format("Please enter a value. The value for %s cannot be empty", name);
+        } else {
+            switch (name) {
+                case "patientFirstName":
+                    if (!text.matches("^[a-zA-z ]*$")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter valid values for %s", name);
+                    }
+                    break;
+                case "patientLastName":
+                    if (!text.matches("^[a-zA-z ]*$")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter valid values for %s", name);
+                    }
+                    break;
+                case "patientPhone":
+                    if (!text.matches("^[0-9]{10}")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter a valid %s", name);
+                    }
+                    break;
+                case "patientEmailId":
+                    if (!ecoSystem.getPatientDirectory().isUsernameAvailable(text)) {
+                        raiseError = true;
+                        errorMsg = String.format("Email Id already exists, please enter a valid mail Id", name);
+                        break;
+                    }
+                    if (!text.matches("^(.+)@(.+)$")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter a valid %s", name);
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+        if (raiseError) {
+            JOptionPane.showMessageDialog(this, errorMsg);
+            return false;
+        }
+        return true;
+    }
+    
     private void backToHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToHomeActionPerformed
         // TODO add your handling code here:
         Home home = new Home();

@@ -5,6 +5,8 @@
 package UserInterface;
 
 import Data.Ecosystem;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,8 +38,8 @@ public class Home extends javax.swing.JFrame {
         leftPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         rightPanel = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        userNameTxt = new javax.swing.JTextField();
+        passwordTxt = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         signUpBtn = new javax.swing.JButton();
@@ -70,25 +72,25 @@ public class Home extends javax.swing.JFrame {
         rightPanel.setBackground(new java.awt.Color(204, 204, 204));
         rightPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setBackground(new java.awt.Color(153, 204, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setToolTipText("Username");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        userNameTxt.setBackground(new java.awt.Color(153, 204, 255));
+        userNameTxt.setForeground(new java.awt.Color(0, 0, 0));
+        userNameTxt.setToolTipText("Username");
+        userNameTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                userNameTxtActionPerformed(evt);
             }
         });
-        rightPanel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 252, 32));
+        rightPanel.add(userNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 252, 32));
 
-        jPasswordField1.setBackground(new java.awt.Color(153, 204, 255));
-        jPasswordField1.setForeground(new java.awt.Color(0, 0, 0));
-        jPasswordField1.setToolTipText("Password");
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        passwordTxt.setBackground(new java.awt.Color(153, 204, 255));
+        passwordTxt.setForeground(new java.awt.Color(0, 0, 0));
+        passwordTxt.setToolTipText("Password");
+        passwordTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                passwordTxtActionPerformed(evt);
             }
         });
-        rightPanel.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 252, 32));
+        rightPanel.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 252, 32));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/padlock.png"))); // NOI18N
         rightPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 30, 30));
@@ -150,25 +152,60 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void passwordTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_passwordTxtActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void userNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_userNameTxtActionPerformed
 
     private void signUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpBtnActionPerformed
                                                                                                                 // TODO add your handling code here:
-        System.out.println("UserInterface.Home.signUpBtnActionPerformed()");
-        CreatePatientPanel createPatientCmp = new CreatePatientPanel();
-        this.setContentPane(createPatientCmp);
-        this.invalidate();
-        this.validate();
+        if(userRole.getSelectedItem().toString().equals("Patient")){
+            CreatePatientPanel createPatientCmp = new CreatePatientPanel();
+            this.setContentPane(createPatientCmp);
+            this.invalidate();
+            this.validate();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Please Contact Admin for Sign Up!");
+        }
     }//GEN-LAST:event_signUpBtnActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
+         HashMap<String,String> pManager;
+        if(userNameTxt.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please enter valid username.");
+        }
+        else if(!passwordTxt.isValid()){
+            JOptionPane.showMessageDialog(this, "Please enter valid password.");
+        }
+        else if(userRole.getSelectedItem().toString().equals("Patient")){
+            pManager = ecoSys.getPatientDirectory().getPasswordManager();
+            if(!(pManager.containsKey(userNameTxt.getText()) && pManager.get(userNameTxt.getText()).equals(passwordTxt.getText()))){
+                JOptionPane.showMessageDialog(this, "Login Failed, please enter valid credentials.");
+            }
+            else{
+                PatientWorkArea patWrkArea = new PatientWorkArea(ecoSys.getPatientDirectory().getPatientMap().get(userNameTxt.getText()));
+                this.setContentPane(patWrkArea);
+                this.invalidate();
+                this.validate();
+            }
+        }
+        else if(userRole.getSelectedItem().toString().equals("System Admin")){
+            pManager = ecoSys.getSystemAdminDirectory().getPasswordManager();
+            if(!(pManager.containsKey(userNameTxt.getText()) && pManager.get(userNameTxt.getText()).equals(passwordTxt.getText()))){
+                JOptionPane.showMessageDialog(this, "Login Failed, please enter valid credentials.");
+            }
+            else{
+                SysAdminWorkArea sysAdmWrkArea = new SysAdminWorkArea();
+                this.setContentPane(sysAdmWrkArea);
+                this.invalidate();
+                this.validate();
+            }
+        }
     }//GEN-LAST:event_loginBtnActionPerformed
 
     /**
@@ -210,13 +247,13 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JButton loginBtn;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JPasswordField passwordTxt;
     private javax.swing.JPanel rightPanel;
     private javax.swing.JButton signUpBtn;
+    private javax.swing.JTextField userNameTxt;
     private javax.swing.JComboBox<String> userRole;
     // End of variables declaration//GEN-END:variables
 }

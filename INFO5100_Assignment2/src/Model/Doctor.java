@@ -30,6 +30,8 @@ public class Doctor extends Person{
         this.degree = degree;
         this.experience = experience;
         this.hospital = hospital;
+        this.doctorId = "doctor"+doctorCounter;
+        doctorCounter++;
     }
     
     public Hospital getHospital() {

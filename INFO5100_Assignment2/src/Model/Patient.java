@@ -17,6 +17,30 @@ public class Patient extends Person {
     private String patientId;
     Ecosystem ecoSystem = Ecosystem.getInstance();
 
+    public static int getPatientCounter() {
+        return patientCounter;
+    }
+
+    public static void setPatientCounter(int patientCounter) {
+        Patient.patientCounter = patientCounter;
+    }
+
+    public String getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
+    }
+
+    public Ecosystem getEcoSystem() {
+        return ecoSystem;
+    }
+
+    public void setEcoSystem(Ecosystem ecoSystem) {
+        this.ecoSystem = ecoSystem;
+    }
+
     public Patient(String firstName, String lastName, Date dateOfBirth, String emailId, String gender, long phoneNumber, House house,String password) {
         super(firstName, lastName, dateOfBirth, emailId, gender, phoneNumber, house, password);
         this.patientId = "patient"+patientCounter;
