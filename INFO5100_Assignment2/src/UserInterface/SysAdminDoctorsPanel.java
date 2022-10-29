@@ -95,13 +95,13 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
         city1 = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jTabbedPane1.setForeground(new java.awt.Color(0, 51, 102));
+        jTabbedPane1.setBackground(new java.awt.Color(0, 102, 153));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setForeground(new java.awt.Color(0, 0, 0));
 
-        doctorsTable.setBackground(new java.awt.Color(204, 204, 204));
+        doctorsTable.setBackground(new java.awt.Color(255, 255, 255));
         doctorsTable.setForeground(new java.awt.Color(0, 0, 0));
         doctorsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,7 +137,7 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Doctor Directory", jPanel2);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel16.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));

@@ -38,6 +38,7 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
         hospitalsPanel = new javax.swing.JButton();
         communityPanel = new javax.swing.JButton();
         cityPanel = new javax.swing.JButton();
+        encounterPanel = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -98,6 +99,15 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
             }
         });
 
+        encounterPanel.setBackground(new java.awt.Color(255, 255, 204));
+        encounterPanel.setForeground(new java.awt.Color(0, 0, 0));
+        encounterPanel.setText("Encounters");
+        encounterPanel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                encounterPanelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -110,7 +120,8 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
                     .addComponent(doctorsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(hospitalsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(communityPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cityPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cityPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(encounterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -126,7 +137,9 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
                 .addComponent(communityPanel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cityPanel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(encounterPanel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
                 .addComponent(logOutAdmin)
                 .addGap(23, 23, 23))
         );
@@ -139,7 +152,7 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Hello,");
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 3, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 51, 102));
         jLabel2.setText("System Admin");
 
@@ -152,7 +165,7 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addContainerGap(266, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,17 +230,26 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
 
     private void communityPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_communityPanelActionPerformed
         // TODO add your handling code here:
+        CommunityPanel commpanel = new CommunityPanel();
+        mainPanel.setRightComponent(commpanel);
     }//GEN-LAST:event_communityPanelActionPerformed
 
     private void cityPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityPanelActionPerformed
         // TODO add your handling code here:
+        CitiesPanel citypanel = new CitiesPanel();
+        mainPanel.setRightComponent(citypanel);
     }//GEN-LAST:event_cityPanelActionPerformed
+
+    private void encounterPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_encounterPanelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_encounterPanelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cityPanel;
     private javax.swing.JButton communityPanel;
     private javax.swing.JButton doctorsPanel;
+    private javax.swing.JButton encounterPanel;
     private javax.swing.JButton getPatientsDirectory;
     private javax.swing.JButton hospitalsPanel;
     private javax.swing.JLabel jLabel1;

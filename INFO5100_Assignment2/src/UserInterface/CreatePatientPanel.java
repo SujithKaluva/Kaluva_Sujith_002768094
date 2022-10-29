@@ -11,6 +11,8 @@ import Model.Person;
 import Model.House;
 import Model.Patient;
 import com.toedter.calendar.JDateChooser;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -32,6 +34,8 @@ public class CreatePatientPanel extends javax.swing.JPanel {
     
     public CreatePatientPanel() {
         initComponents();
+        DefaultComboBoxModel cityModelList = new DefaultComboBoxModel(ecoSystem.getCityListComboBox().toArray());
+        city.setModel(cityModelList);
         firstName.setName("patientFirstName");        
         lastName.setName("patientLastName");
         eMailId.setName("patientEmailId");
@@ -104,16 +108,16 @@ public class CreatePatientPanel extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addGap(20, 20, 20))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(164, 164, 164)
+                .addGap(167, 167, 167)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(299, Short.MAX_VALUE))
+                .addContainerGap(296, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel2);
@@ -213,6 +217,11 @@ public class CreatePatientPanel extends javax.swing.JPanel {
         });
 
         city.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston" }));
+        city.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cityActionPerformed(evt);
+            }
+        });
 
         community.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Roxbury", "Jamaica Plain" }));
 
@@ -460,12 +469,12 @@ public class CreatePatientPanel extends javax.swing.JPanel {
         }
 
         if (validated && validatedOtherFields) {
+            String cityName = city.getSelectedItem().toString();
+            City city = new City(cityName);
+            
             Community community = new Community();
             community.setCommunity(this.community.getSelectedItem().toString());
-
-            City city = new City();
-            city.setCity(this.city.getSelectedItem().toString());
-            city.setCommunityName(community);
+            community.setCity(city);
 
             House house = new House();
             house.setAddressLine1(addressLine1.getText());
@@ -544,6 +553,10 @@ public class CreatePatientPanel extends javax.swing.JPanel {
         ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
         home.setVisible(true);
     }//GEN-LAST:event_backToHomeActionPerformed
+
+    private void cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cityActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

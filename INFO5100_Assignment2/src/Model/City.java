@@ -11,7 +11,10 @@ package Model;
 public class City {
     
     private String city;
-    private Community communityName;
+
+    public City(String city) {
+        this.city = city;
+    }
 
     public String getCity() {
         return city;
@@ -19,14 +22,6 @@ public class City {
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public Community getCommunityName() {
-        return communityName;
-    }
-
-    public void setCommunityName(Community communityName) {
-        this.communityName = communityName;
     }
     
     
