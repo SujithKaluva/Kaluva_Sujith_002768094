@@ -208,6 +208,18 @@ public class Home extends javax.swing.JFrame {
                 this.validate();
             }
         }
+        else if(userRole.getSelectedItem().toString().equals("Hospital Admin")){
+            pManager = ecoSys.getPatientDirectory().getPasswordManager();
+            if(!(pManager.containsKey(userNameTxt.getText()) && pManager.get(userNameTxt.getText()).equals(passwordTxt.getText()))){
+                JOptionPane.showMessageDialog(this, "Login Failed, please enter valid credentials.");
+            }
+            else{
+                HospitalAdminWorkArea hspWrkArea = new HospitalAdminWorkArea(userNameTxt.getText());
+                this.setContentPane(hspWrkArea);
+                this.invalidate();
+                this.validate();
+            }
+        }
         else if(userRole.getSelectedItem().toString().equals("System Admin")){
             pManager = ecoSys.getSystemAdminDirectory().getPasswordManager();
             if(!(pManager.containsKey(userNameTxt.getText()) && pManager.get(userNameTxt.getText()).equals(passwordTxt.getText()))){
