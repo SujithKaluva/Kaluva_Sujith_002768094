@@ -7,7 +7,15 @@ package UserInterface;
 import Data.Ecosystem;
 import Model.Doctor;
 import Model.Patient;
+import Model.City;
+import Model.House;
+import Model.Community;
+import Model.Hospital;
+import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
+import javax.swing.JComponent;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,27 +28,93 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
      * Creates new form SysAdminDoctorsPanel
      */
     Ecosystem ecoSystem = Ecosystem.getInstance();
+
     public SysAdminDoctorsPanel() {
         initComponents();
+        firstName.setName("patientFirstName");
+        lastName.setName("patientLastName");
+        eMailId.setName("patientEmailId");
+        dateOfBirth.setName("patientDOB");
+        gender.setName("patientGender");
+        phone.setName("patientPhone");
+        addressLine1.setName("addressLine1");
+        addressLine2.setName("addressLine2");
+        community.setName("patientCommunity");
+        city.setName("patientCity");
+        state.setName("patientState");
+        zipCode.setName("patientZipCode");
+        passWord.setName("password");
         populateDoctorDirectory();
+
     }
-    
-    public void populateDoctorDirectory(){
-        SimpleDateFormat dateFormat= new SimpleDateFormat("MMM dd, yyyy");
+
+    public void populateDoctorDirectory() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
         DefaultTableModel model = (DefaultTableModel) doctorsTable.getModel();
-            model.setRowCount(0);
-            for(Doctor pObj:ecoSystem.getDoctorDirectory().getDoctorList()){
-                Object[] row = new Object[10];
-                row[0] = pObj.getFirstName()+" "+pObj.getLastName();
-                row[1] = pObj.getHospital().getHospitalName();
-                row[2] = pObj.getExperience();
-                row[3] = pObj.getSpecialisation();
-                row[4] = pObj.getDegree();
-                row[5] = pObj.getEmailId();
-                row[6] = pObj.getPhoneNumber();
-                row[7] = pObj.getDoctorId();
-                model.addRow(row);
+        model.setRowCount(0);
+        for (Doctor pObj : ecoSystem.getDoctorDirectory().getDoctorList()) {
+            Object[] row = new Object[8];
+            row[0] = pObj.getFirstName() + " " + pObj.getLastName();
+            row[1] = pObj.getHospital().getHospitalName();
+            row[2] = pObj.getExperience();
+            row[3] = pObj.getSpecialisation();
+            row[4] = pObj.getDegree();
+            row[5] = pObj.getEmailId();
+            row[6] = pObj.getPhoneNumber();
+            row[7] = pObj.getDoctorId();
+            model.addRow(row);
+        }
+    }
+
+    public boolean validateData(JComponent input) {
+        String name = input.getName();
+        String errorMsg = "";
+        boolean raiseError = false;
+        String text = ((JTextField) input).getText().trim();
+        if (text == null || text.isEmpty()) {
+            raiseError = true;
+            errorMsg = String.format("Please enter a value. The value for %s cannot be empty", name);
+        } else {
+            switch (name) {
+                case "patientFirstName":
+                    if (!text.matches("^[a-zA-z ]*$")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter valid values for %s", name);
+                    }
+                    break;
+                case "patientLastName":
+                    if (!text.matches("^[a-zA-z ]*$")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter valid values for %s", name);
+                    }
+                    break;
+                case "patientPhone":
+                    if (!text.matches("^[0-9]{10}")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter a valid %s", name);
+                    }
+                    break;
+                case "patientEmailId":
+                    if (!ecoSystem.getDoctorDirectory().isUsernameAvailable(text)) {
+                        raiseError = true;
+                        errorMsg = String.format("Email Id already exists, please enter a valid mail Id", name);
+                        break;
+                    }
+                    if (!text.matches("^(.+)@(.+)$")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter a valid %s", name);
+                    }
+                    break;
+
+                default:
+                    break;
             }
+        }
+        if (raiseError) {
+            JOptionPane.showMessageDialog(this, errorMsg);
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -454,55 +528,52 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
 
     private void createDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createDoctorActionPerformed
 //        // TODO add your handling code here:
-//        boolean validated = false;
-//        boolean validatedOtherFields = false;
-//        String selectedGender = gender.getSelectedItem().toString();
-//        String selectedCity = city.getSelectedItem().toString();
-//        String selectedCommunity = community.getSelectedItem().toString();
-//        JDateChooser strtDt = dateOfBirth;
-//        if(!selectedCity.isEmpty() && !selectedCommunity.isEmpty() && !selectedGender.isEmpty() && strtDt!=null){
-//            validatedOtherFields = true;
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(this, "All Fields are Mandatory!");
-//        }
-//        JTextField[] VARIABLE_CONSTANTS = {firstName, lastName, eMailId, phone, addressLine1, addressLine2,state,zipCode,passWord};
-//        for (JTextField field : VARIABLE_CONSTANTS) {
-//            if (!validateData(field)) {
-//                validated = false;
-//                break;
-//            } else {
-//                validated = true;
-//                System.out.println("Validated");
-//            }
-//        }
-//
-//        if (validated && validatedOtherFields) {
-//            Community community = new Community();
-//            community.setCommunity(this.community.getSelectedItem().toString());
-//
-//            City city = new City();
-//            city.setCity(this.city.getSelectedItem().toString());
-//            city.setCommunityName(community);
-//
-//            House house = new House();
-//            house.setAddressLine1(addressLine1.getText());
-//            house.setAddressLine2(addressLine2.getText());
-//            house.setState(state.getText());
-//            house.setZipCode(Integer.valueOf(zipCode.getText()));
-//
-//            Patient patient = new Patient(firstName.getText(), lastName.getText(), dateOfBirth.getDate(), eMailId.getText(), gender.getSelectedItem().toString(), Long.parseLong(phone.getText()), house, passWord.getText());
-//            System.out.println("Patient Size" + ecoSystem.getPatientDirectory().getPatientList().size());
-//            System.out.println("Person Size" + ecoSystem.getPersonDirectory().getPersonList().size());
-//
-//            //back to login page
-//            Home home = new Home();
-//            ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
-//            home.setVisible(true);
-//        }
-//        else{
-//            //JOptionPane.showMessageDialog(this, "All Fields are Mandatory!");
-//        }
+        boolean validated = false;
+        boolean validatedOtherFields = false;
+        String selectedGender = gender.getSelectedItem().toString();
+        String selectedCity = city.getSelectedItem().toString();
+        String hos = city1.getSelectedItem().toString();
+        String selectedCommunity = community.getSelectedItem().toString();
+        JDateChooser strtDt = dateOfBirth;
+        if (!selectedCity.isEmpty() && !selectedCommunity.isEmpty() && !selectedGender.isEmpty() && strtDt != null && !specialisation.getText().isEmpty() && !degree.getText().isEmpty() && !experience.getText().isEmpty() && !hos.isEmpty()) {
+            validatedOtherFields = true;
+        } else {
+            JOptionPane.showMessageDialog(this, "All Fields are Mandatory!");
+        }
+        JTextField[] VARIABLE_CONSTANTS = {firstName, lastName, eMailId, phone, addressLine1, addressLine2, state, zipCode, passWord};
+        for (JTextField field : VARIABLE_CONSTANTS) {
+            if (!validateData(field)) {
+                validated = false;
+                break;
+            } else {
+                validated = true;
+                System.out.println("Validated");
+            }
+        }
+
+        if (validated && validatedOtherFields) {
+            String cityName = city.getSelectedItem().toString();
+            City city = new City(cityName);
+
+            Community community = new Community();
+            community.setCommunity(this.community.getSelectedItem().toString());
+            community.setCity(city);
+            Hospital h = new Hospital();
+            h.setHospitalName(city1.getSelectedItem().toString());
+
+            House house = new House();
+            house.setAddressLine1(addressLine1.getText());
+            house.setAddressLine2(addressLine2.getText());
+            house.setState(state.getText());
+            house.setZipCode(Integer.valueOf(zipCode.getText()));
+            //String specialisation, String degree, int experience, Hospital hospital, String firstName, String lastName, Date dateOfBirth, String emailId, String gender, long phoneNumber, House house, String password
+            Doctor d = new Doctor(specialisation.getText(), degree.getText(), Integer.parseInt(experience.getText()), h, firstName.getText(), lastName.getText(), dateOfBirth.getDate(), eMailId.getText(), gender.getSelectedItem().toString(), Long.parseLong(phone.getText()), house, passWord.getText());
+            //System.out.println("Patient Size" + ecoSystem.getPatientDirectory().getPatientList().size());
+            //System.out.println("Person Size" + ecoSystem.getPersonDirectory().getPersonList().size());
+            ecoSystem.getDoctorDirectory().addDoctor(d);
+            populateDoctorDirectory();
+        }
+
     }//GEN-LAST:event_createDoctorActionPerformed
 
     private void addressLine1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressLine1ActionPerformed

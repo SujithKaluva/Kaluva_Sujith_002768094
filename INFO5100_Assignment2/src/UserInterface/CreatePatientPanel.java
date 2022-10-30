@@ -481,6 +481,8 @@ public class CreatePatientPanel extends javax.swing.JPanel {
             house.setAddressLine2(addressLine2.getText());
             house.setState(state.getText());
             house.setZipCode(Integer.valueOf(zipCode.getText()));
+            house.setCommunity(community);
+            house.setCity(city);
 
             Patient patient = new Patient(firstName.getText(), lastName.getText(), dateOfBirth.getDate(), eMailId.getText(), gender.getSelectedItem().toString(), Long.parseLong(phone.getText()), house, passWord.getText());
             System.out.println("Patient Size" + ecoSystem.getPatientDirectory().getPatientList().size());

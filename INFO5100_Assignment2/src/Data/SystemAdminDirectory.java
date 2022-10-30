@@ -15,7 +15,7 @@ public class SystemAdminDirectory {
     private static HashMap<String,String> passwordManager;
 
     public SystemAdminDirectory() {
-        passwordManager = new HashMap<String,String>();
+        passwordManager = new HashMap<>();
         passwordManager.put("sysadmin", "sysadmin");
     }
 

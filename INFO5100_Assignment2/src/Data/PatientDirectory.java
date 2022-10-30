@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Data;
+import Model.City;
+import Model.Community;
+import Model.House;
 import Model.Patient;
 import java.util.*;
 /**
@@ -14,7 +17,6 @@ public class PatientDirectory {
     private ArrayList<Patient> patientList;
     private HashMap<String,String> passwordManager;
     private HashMap<String,Patient> patientMap;
-
     public HashMap<String, Patient> getPatientMap() {
         return patientMap;
     }
@@ -24,9 +26,9 @@ public class PatientDirectory {
     }
     
     public PatientDirectory(){
-        this.patientList = new ArrayList<Patient>();
-        this.passwordManager = new HashMap<String,String>();
-        this.patientMap = new HashMap<String,Patient>();
+        this.patientList = new ArrayList<>();
+        this.passwordManager = new HashMap<>();
+        this.patientMap = new HashMap<>();
     }
 
     public ArrayList<Patient> getPatientList() {

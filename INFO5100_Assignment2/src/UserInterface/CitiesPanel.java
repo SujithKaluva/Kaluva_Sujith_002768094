@@ -8,6 +8,7 @@ import Data.Ecosystem;
 import Model.City;
 import Model.Patient;
 import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -158,9 +159,14 @@ public class CitiesPanel extends javax.swing.JPanel {
 
     private void addCityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCityBtnActionPerformed
         // TODO add your handling code here:
-        City cityObj = new City(city.getText());
-        ecoSystem.addCity(cityObj);
-        populateCities();
+        if(!city.getText().isEmpty()) {
+            City cityObj = new City(city.getText());
+            ecoSystem.addCity(cityObj);
+            populateCities();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Please enter a valid City");
+        }
     }//GEN-LAST:event_addCityBtnActionPerformed
 
     private void deleteCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCityActionPerformed

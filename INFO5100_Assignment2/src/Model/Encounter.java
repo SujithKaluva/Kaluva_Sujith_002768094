@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Model;
+import Data.Ecosystem;
 import java.util.*;
 
 /**
@@ -11,11 +12,14 @@ import java.util.*;
  */
 public class Encounter {
     
+    private static int encounterCounter = 1;
+    private String encounterId;
     private Date encounterDate;
     private String diagnosis;
     private Patient patient;
     private VitalSigns vitalSign;
     private Doctor doctor;
+    Ecosystem ecoSystem = Ecosystem.getInstance();
 
     public Encounter(Date encounterDate, String diagnosis, Patient patient, VitalSigns vitalSign, Doctor doctor) {
         this.encounterDate = encounterDate;
@@ -23,6 +27,13 @@ public class Encounter {
         this.patient = patient;
         this.vitalSign = vitalSign;
         this.doctor = doctor;
+        this.encounterId = "encounter"+encounterCounter;
+        encounterCounter++;
+        ecoSystem.getEncounterHistory().addEncounter(this);
+    }
+
+    public String getEncounterId() {
+        return encounterId;
     }
 
     public Doctor getDoctor() {

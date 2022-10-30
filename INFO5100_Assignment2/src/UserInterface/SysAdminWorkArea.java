@@ -226,6 +226,8 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
 
     private void hospitalsPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalsPanelActionPerformed
         // TODO add your handling code here:
+        HospitalCreationPanel hospPanel = new HospitalCreationPanel();
+        mainPanel.setRightComponent(hospPanel);
     }//GEN-LAST:event_hospitalsPanelActionPerformed
 
     private void communityPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_communityPanelActionPerformed
@@ -242,6 +244,8 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
 
     private void encounterPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_encounterPanelActionPerformed
         // TODO add your handling code here:
+        EncounterHistoryPanel encPanel = new EncounterHistoryPanel();
+        mainPanel.setRightComponent(encPanel);
     }//GEN-LAST:event_encounterPanelActionPerformed
 
 

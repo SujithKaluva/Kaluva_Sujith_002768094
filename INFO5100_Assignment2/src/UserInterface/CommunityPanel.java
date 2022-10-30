@@ -9,6 +9,7 @@ import Model.City;
 import Model.Community;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -173,14 +174,18 @@ public class CommunityPanel extends javax.swing.JPanel {
 
     private void addCommunityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCommunityBtnActionPerformed
         // TODO add your handling code here:
-        String cityName = cityComboBox.getSelectedItem().toString();
-        City city = new City(cityName);
-        Community comm = new Community();
-        comm.setCity(city);
-        comm.setCommunity(communityName.getText());
-        ecoSystem.addCommunity(comm);
-        //Update table with new community
-        populateCommunityTable();
+        if(!(cityComboBox.getSelectedItem().toString().isEmpty() && communityName.getText().isEmpty())) {
+            String cityName = cityComboBox.getSelectedItem().toString();
+            City city = new City(cityName);
+            Community comm = new Community();
+            comm.setCity(city);
+            comm.setCommunity(communityName.getText());
+            ecoSystem.addCommunity(comm);
+            //Update table with new community
+            populateCommunityTable();
+        } else {
+            JOptionPane.showMessageDialog(this, "All Fields are mandatory.");
+        }
     }//GEN-LAST:event_addCommunityBtnActionPerformed
 
 
