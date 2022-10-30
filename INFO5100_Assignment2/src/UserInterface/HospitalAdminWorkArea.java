@@ -114,9 +114,9 @@ public class HospitalAdminWorkArea extends javax.swing.JPanel {
                 .addComponent(hospitalsPanel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(encounterPanel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
                 .addComponent(logOutAdmin)
-                .addGap(14, 14, 14))
+                .addGap(30, 30, 30))
         );
 
         mainPanel.setLeftComponent(jPanel2);

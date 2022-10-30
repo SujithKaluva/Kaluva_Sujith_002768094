@@ -113,7 +113,7 @@
                           <EmptySpace min="-2" pref="250" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="hospitalNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="doctorName" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="379" max="32767" attributes="0"/>
                       </Group>
@@ -125,7 +125,7 @@
                           <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="hospitalNameLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="doctorName" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="219" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -143,7 +143,7 @@
                     <Property name="text" type="java.lang.String" value="Hello,"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="hospitalNameLabel">
+                <Component class="javax.swing.JLabel" name="doctorName">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Helvetica Neue" size="36" style="1"/>

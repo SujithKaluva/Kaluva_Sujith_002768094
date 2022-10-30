@@ -6,6 +6,7 @@ package UserInterface;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import Model.Doctor;
 
 /**
  *
@@ -16,8 +17,11 @@ public class DoctorWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form DoctorWorkArea
      */
-    public DoctorWorkArea() {
+    Doctor doctor;
+    public DoctorWorkArea(Doctor dObj) {
         initComponents();
+        doctor = dObj;
+        doctorName.setText(doctor.getFirstName()+" "+doctor.getLastName());
     }
 
     /**
@@ -35,7 +39,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         logOutAdmin = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        hospitalNameLabel = new javax.swing.JLabel();
+        doctorName = new javax.swing.JLabel();
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 102));
 
@@ -73,9 +77,9 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Hello,");
 
-        hospitalNameLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
-        hospitalNameLabel.setForeground(new java.awt.Color(0, 51, 102));
-        hospitalNameLabel.setText("Doctor");
+        doctorName.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
+        doctorName.setForeground(new java.awt.Color(0, 51, 102));
+        doctorName.setText("Doctor");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -85,7 +89,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
                 .addGap(250, 250, 250)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(hospitalNameLabel))
+                    .addComponent(doctorName))
                 .addContainerGap(379, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -94,7 +98,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
                 .addGap(152, 152, 152)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(hospitalNameLabel)
+                .addComponent(doctorName)
                 .addContainerGap(219, Short.MAX_VALUE))
         );
 
@@ -133,7 +137,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel hospitalNameLabel;
+    private javax.swing.JLabel doctorName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
