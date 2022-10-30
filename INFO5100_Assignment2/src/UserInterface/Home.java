@@ -130,7 +130,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE))
+                .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +142,9 @@ public class Home extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,6 +192,18 @@ public class Home extends javax.swing.JFrame {
             else{
                 PatientWorkArea patWrkArea = new PatientWorkArea(ecoSys.getPatientDirectory().getPatientMap().get(userNameTxt.getText()));
                 this.setContentPane(patWrkArea);
+                this.invalidate();
+                this.validate();
+            }
+        }
+        else if(userRole.getSelectedItem().toString().equals("Community Admin")){
+            pManager = ecoSys.getPatientDirectory().getPasswordManager();
+            if(!(pManager.containsKey(userNameTxt.getText()) && pManager.get(userNameTxt.getText()).equals(passwordTxt.getText()))){
+                JOptionPane.showMessageDialog(this, "Login Failed, please enter valid credentials.");
+            }
+            else{
+                CommunityAdminWorkArea cmWrkArea = new CommunityAdminWorkArea(userNameTxt.getText());
+                this.setContentPane(cmWrkArea);
                 this.invalidate();
                 this.validate();
             }
