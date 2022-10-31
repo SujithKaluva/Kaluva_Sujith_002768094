@@ -23,11 +23,13 @@ public class AppointmentDoctor extends javax.swing.JPanel {
     public AppointmentDoctor() {
         initComponents();
     }
-     Ecosystem ecoSystem = Ecosystem.getInstance();
+    Ecosystem ecoSystem = Ecosystem.getInstance();
     Doctor d;
+    Encounter selectedEncounter;
+
     AppointmentDoctor(Doctor d) {
         initComponents();
-        this.d=d;
+        this.d = d;
         populateTable();
     }
 
@@ -99,7 +101,9 @@ public class AppointmentDoctor extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Weight");
 
+        bp.setBackground(new java.awt.Color(0, 0, 0));
         bp.setForeground(new java.awt.Color(255, 255, 255));
+        bp.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         bp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bpActionPerformed(evt);
@@ -109,11 +113,17 @@ public class AppointmentDoctor extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Height");
 
+        oxy.setBackground(new java.awt.Color(0, 0, 0));
         oxy.setForeground(new java.awt.Color(255, 255, 255));
+        oxy.setSelectedTextColor(new java.awt.Color(255, 255, 255));
 
+        weight.setBackground(new java.awt.Color(0, 0, 0));
         weight.setForeground(new java.awt.Color(255, 255, 255));
+        weight.setSelectedTextColor(new java.awt.Color(255, 255, 255));
 
+        height.setBackground(new java.awt.Color(0, 0, 0));
         height.setForeground(new java.awt.Color(255, 255, 255));
+        height.setSelectedTextColor(new java.awt.Color(255, 255, 255));
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Diagnosis");
@@ -124,6 +134,7 @@ public class AppointmentDoctor extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Pulse Rate");
 
+        diagnosis.setBackground(new java.awt.Color(0, 0, 0));
         diagnosis.setForeground(new java.awt.Color(255, 255, 255));
         diagnosis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +145,9 @@ public class AppointmentDoctor extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Respiratory Rate");
 
+        bodytemp.setBackground(new java.awt.Color(0, 0, 0));
         bodytemp.setForeground(new java.awt.Color(255, 255, 255));
+        bodytemp.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         bodytemp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bodytempActionPerformed(evt);
@@ -144,7 +157,9 @@ public class AppointmentDoctor extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Blood Pressure");
 
+        pulse.setBackground(new java.awt.Color(0, 0, 0));
         pulse.setForeground(new java.awt.Color(255, 255, 255));
+        pulse.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         pulse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pulseActionPerformed(evt);
@@ -154,7 +169,9 @@ public class AppointmentDoctor extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Oxygen Saturation");
 
+        resrate.setBackground(new java.awt.Color(0, 0, 0));
         resrate.setForeground(new java.awt.Color(255, 255, 255));
+        resrate.setSelectedTextColor(new java.awt.Color(255, 255, 255));
 
         fetch.setBackground(new java.awt.Color(0, 102, 153));
         fetch.setForeground(new java.awt.Color(255, 255, 255));
@@ -261,26 +278,38 @@ public class AppointmentDoctor extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int c=encounter_history.getSelectedRow();
-        for(Encounter e:ecoSystem.getEncounterHistory().getEncounterHistory()){
-            if(e.getEncounterId()== encounter_history.getValueAt(c, 0)){
-                e.setDiagnosis(diagnosis.getText());
-        VitalSigns vt=new VitalSigns(Integer.parseInt(bodytemp.getText()),Integer.parseInt(pulse.getText()),Integer.parseInt(resrate.getText()),Integer.parseInt(bp.getText()),Integer.parseInt(oxy.getText()),Integer.parseInt(weight.getText()),Integer.parseInt(height.getText()));
-        e.setVitalSign(vt);
-            }
+        String regex = "^[0-9, ]+$";
+        if (selectedEncounter == null) {
+            JOptionPane.showMessageDialog(this, "Encounter Not Found!");
+        } else if (diagnosis.getText().isEmpty() || bp.getText().isEmpty() || bodytemp.getText().isEmpty() || oxy.getText().isEmpty() || pulse.getText().isEmpty() || weight.getText().isEmpty() || resrate.getText().isEmpty() || height.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "All fields are mandatory!");
+        } else if (!(bp.getText().matches(regex) && bodytemp.getText().matches(regex) && oxy.getText().matches(regex)&& pulse.getText().matches(regex) && weight.getText().matches(regex) && resrate.getText().matches(regex) && height.getText().matches(regex))) {
+
+            JOptionPane.showMessageDialog(this, "Enter Valid Vitals!");
+        } else {
+            //int c=encounter_history.getSelectedRow();
+
+//        for(Encounter e:ecoSystem.getEncounterHistory().getEncounterHistory()){
+//            if(e.getEncounterId() == encounter_history.getValueAt(c, 0)){
+            selectedEncounter.setDiagnosis(diagnosis.getText());
+            VitalSigns vt = new VitalSigns(Integer.parseInt(bodytemp.getText()), Integer.parseInt(pulse.getText()), Integer.parseInt(resrate.getText()), Integer.parseInt(bp.getText()), Integer.parseInt(oxy.getText()), Integer.parseInt(weight.getText()), Integer.parseInt(height.getText()));
+            selectedEncounter.setVitalSign(vt);
+//            }
+//        }
+            JOptionPane.showMessageDialog(this, "Encounter Updated Successfully!");
+
+            bodytemp.setText("");
+            pulse.setText("");
+            resrate.setText("");
+            bp.setText("");
+            oxy.setText("");
+            weight.setText("");
+            height.setText("");
+            diagnosis.setText("");
+
         }
-         JOptionPane.showMessageDialog(this, "Encounter Added");
-         
-                bodytemp.setText("");
-                pulse.setText("");
-                resrate.setText("");
-                bp.setText("");
-                oxy.setText("");
-                weight.setText("");
-                height.setText("");
-         
-        
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bpActionPerformed
@@ -301,10 +330,19 @@ public class AppointmentDoctor extends javax.swing.JPanel {
 
     private void fetchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fetchActionPerformed
         // TODO add your handling code here:
-        int s=encounter_history.getSelectedRow();
+        int s = encounter_history.getSelectedRow();
+        if(s == -1){
+            JOptionPane.showMessageDialog(this, "Please Fetch an Appointment!");
+        }
+        else{
+        
         boolean found = false;
-        for(Encounter e:ecoSystem.getEncounterHistory().getEncounterHistory()){
-            if(e.getEncounterId()== encounter_history.getValueAt(s, 0)){
+        for (Encounter e : ecoSystem.getEncounterHistory().getEncounterHistory()) {
+            System.out.println(encounter_history.getValueAt(s, 0));
+            System.out.println(e.toString());
+            if (e.getEncounterId().equalsIgnoreCase(encounter_history.getValueAt(s, 0).toString())) {
+                System.out.println("INLoop");
+                selectedEncounter = e;
                 diagnosis.setText(e.getDiagnosis());
                 bodytemp.setText(String.valueOf(e.getVitalSign().getBodyTemp()));
                 pulse.setText(String.valueOf(e.getVitalSign().getPulseRate()));
@@ -316,8 +354,20 @@ public class AppointmentDoctor extends javax.swing.JPanel {
                 found = true;
             }
         }
-        if(!found) System.out.println("Not Found");
-            
+        if (!found) {
+            JOptionPane.showMessageDialog(this, "Encounter Not Found");
+            selectedEncounter = null;
+            bodytemp.setText("");
+            pulse.setText("");
+            resrate.setText("");
+            bp.setText("");
+            oxy.setText("");
+            weight.setText("");
+            height.setText("");
+            diagnosis.setText("");
+        }
+        }
+
     }//GEN-LAST:event_fetchActionPerformed
 
 
@@ -347,18 +397,16 @@ public class AppointmentDoctor extends javax.swing.JPanel {
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) encounter_history.getModel();
         model.setRowCount(0);
-        for(Encounter en : ecoSystem.getEncounterHistory().getEncounterHistory())
-             
-            {
-                if(d.getEmailId().equals(en.getDoctor().getEmailId()))
-           {
-                
-            Object[] row = new Object[6];
-            row[0] = en.getEncounterId();
-            row[1] = en.getEncounterDate();
-            row[2] = en.getDoctor().getFirstName()+""+en.getDoctor().getLastName();
-            row[3] = en.getPatient().getFirstName()+""+en.getPatient().getLastName();
-            model.addRow(row);
-            }}
+        for (Encounter en : ecoSystem.getEncounterHistory().getEncounterHistory()) {
+            if (d.getEmailId().equals(en.getDoctor().getEmailId())) {
+
+                Object[] row = new Object[6];
+                row[0] = en.getEncounterId();
+                row[1] = en.getEncounterDate();
+                row[2] = en.getDoctor().getFirstName() + " " + en.getDoctor().getLastName();
+                row[3] = en.getPatient().getFirstName() + " " + en.getPatient().getLastName();
+                model.addRow(row);
+            }
+        }
     }
 }

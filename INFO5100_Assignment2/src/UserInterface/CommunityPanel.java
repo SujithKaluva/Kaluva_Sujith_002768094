@@ -846,9 +846,15 @@ public class CommunityPanel extends javax.swing.JPanel {
 
     private void deleteCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCommunityActionPerformed
         // TODO add your handling code here:
-        String communityName = communityTable.getValueAt(communityTable.getSelectedRow(), 1).toString();
-        ecoSystem.deleteCommunity(communityName);
-        populateCommunityTable();
+        if(communityTable.getSelectedRow()==-1){
+            JOptionPane.showMessageDialog(this, "Please select a community!");
+        }
+        else{
+            String communityName = communityTable.getValueAt(communityTable.getSelectedRow(), 1).toString();
+            ecoSystem.deleteCommunity(communityName);
+            populateCommunityTable();
+            
+        }
     }//GEN-LAST:event_deleteCommunityActionPerformed
 
     private void cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityActionPerformed

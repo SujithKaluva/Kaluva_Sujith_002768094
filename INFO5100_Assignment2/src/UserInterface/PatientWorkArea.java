@@ -48,7 +48,7 @@ public class PatientWorkArea extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
         logoutBtn.setBackground(new java.awt.Color(153, 153, 153));
-        logoutBtn.setForeground(new java.awt.Color(255, 255, 255));
+        logoutBtn.setForeground(new java.awt.Color(0, 0, 0));
         logoutBtn.setText("Logout");
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

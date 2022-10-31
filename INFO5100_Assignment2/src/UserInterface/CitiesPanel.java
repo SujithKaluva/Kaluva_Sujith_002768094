@@ -176,10 +176,16 @@ public class CitiesPanel extends javax.swing.JPanel {
 
     private void deleteCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCityActionPerformed
         // TODO add your handling code here:
+        
         int row = cityTable.getSelectedRow();
-        String cityName = cityTable.getValueAt(row, 0).toString();
+        if(row==-1){
+            JOptionPane.showMessageDialog(this, "Please select a City");
+        }
+        else{
+            String cityName = cityTable.getValueAt(row, 0).toString();
         ecoSystem.removeCity(cityName);
         populateCities();
+        }
     }//GEN-LAST:event_deleteCityActionPerformed
     
     public void populateCities(){

@@ -974,7 +974,7 @@
                           <Component id="update" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="delete" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="59" max="32767" attributes="0"/>
+                      <EmptySpace pref="25" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

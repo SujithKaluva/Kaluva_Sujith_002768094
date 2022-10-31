@@ -1095,7 +1095,7 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
 
     private void communityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_communityItemStateChanged
         // TODO add your handling code here:
-        String commName = community.getSelectedItem().toString();
+        String commName = community.getSelectedItem()==null?"":community.getSelectedItem().toString();
         ArrayList<String> hospBoxList = new ArrayList<String>();
         for(Hospital c:ecoSystem.getHospitalList()){
             if(c.getCommunity().getCommunity().equals(commName)){
@@ -1108,7 +1108,7 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
 
     private void cityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cityItemStateChanged
         // TODO add your handling code here:
-        String cityName = city.getSelectedItem().toString();
+        String cityName = city.getSelectedItem()==null?"":city.getSelectedItem().toString();
         ArrayList<String> communityBoxList = new ArrayList<String>();
         for(Community c:ecoSystem.getCommunityList()){
             if(c.getCity().getCity().equals(cityName)){
@@ -1146,7 +1146,7 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
 
     private void city3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_city3ItemStateChanged
         // TODO add your handling code here:
-        String cityName = city3.getSelectedItem().toString();
+        String cityName = city3.getSelectedItem()==null?"":city3.getSelectedItem().toString();
         ArrayList<String> communityBoxList = new ArrayList<String>();
         for(Community c:ecoSystem.getCommunityList()){
             if(c.getCity().getCity().equals(cityName)){
@@ -1161,7 +1161,7 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
     private void community1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_community1ItemStateChanged
         // TODO add your handling code here:
         
-        String commName = community1.getSelectedItem().toString();
+        String commName = community1.getSelectedItem()==null?"":community1.getSelectedItem().toString();
         ArrayList<String> hospBoxList = new ArrayList<String>();
         for(Hospital c:ecoSystem.getHospitalList()){
             if(c.getCommunity().getCommunity().equals(commName)){
@@ -1209,7 +1209,7 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
                 objVal = dObj.getFirstName()+ " " + dObj.getLastName();
             }
             
-            if(objVal.contains(searchText)){
+            if(objVal.equalsIgnoreCase(searchText)){
                 selectedDoctor = dObj;
                 firstName1.setText(dObj.getFirstName());
                 lastName1.setText(dObj.getLastName());
@@ -1252,7 +1252,7 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "All Fields are Mandatory!");
         }
-        JTextField[] VARIABLE_CONSTANTS = {firstName1, lastName1, eMailId1, phone1, addressLine11, addressLine21, state1, zipCode1,degree1, experience1, specialisation1, passWord1};
+        JTextField[] VARIABLE_CONSTANTS = {firstName1, lastName1, phone1, addressLine11, addressLine21, state1, zipCode1,degree1, experience1, specialisation1, passWord1};
         for (JTextField field : VARIABLE_CONSTANTS) {
             if (!validateData(field)) {
                 validated = false;
