@@ -529,7 +529,7 @@ public class HospitalCreationPanel extends javax.swing.JPanel {
     private void deleteHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteHospitalActionPerformed
         // TODO add your handling code here:
         if(hObjUpdate!=null){
-            ecoSystem.getHospitalList().remove(hObjUpdate);
+            ecoSystem.deleteHospital(hObjUpdate);
             populateHospitals();
 
             JOptionPane.showMessageDialog(this, "Hospital Deleted Successfully!");

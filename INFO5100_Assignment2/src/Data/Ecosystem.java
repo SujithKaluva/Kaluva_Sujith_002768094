@@ -89,7 +89,7 @@ public class Ecosystem {
         Hospital hosp1 = new Hospital();
         hosp1.setHospitalName("Roxbury Public Hospital");
         hosp1.setPhoneNumber(9876543210l);
-        hosp1.setCity(city1);
+        hosp1.setCity(community1.getCity());
         hosp1.setCommunity(community1);
         hosp1.setAddress("Day Street, 1");
         this.hospitalList.add(hosp1);
@@ -98,7 +98,7 @@ public class Ecosystem {
         Hospital hosp2 = new Hospital();
         hosp2.setHospitalName("Northeastern Hospital");
         hosp2.setPhoneNumber(9876543211l);
-        hosp2.setCity(city1);
+        hosp2.setCity(community1.getCity());
         hosp2.setCommunity(community1);
         hosp2.setAddress("John Street, 1");
         this.hospitalList.add(hosp2);
@@ -107,7 +107,7 @@ public class Ecosystem {
         Hospital hosp3 = new Hospital();
         hosp3.setHospitalName("JP Hospital");
         hosp3.setPhoneNumber(9876543212l);
-        hosp3.setCity(city1);
+        hosp3.setCity(community2.getCity());
         hosp3.setCommunity(community2);
         hosp3.setAddress("Mike Street, 1");
         this.hospitalList.add(hosp3);
@@ -116,7 +116,7 @@ public class Ecosystem {
         Hospital hosp4 = new Hospital();
         hosp4.setHospitalName("George Hospital");
         hosp4.setPhoneNumber(9876543213l);
-        hosp4.setCity(city2);
+        hosp4.setCity(community3.getCity());
         hosp4.setCommunity(community3);
         hosp4.setAddress("Ray Street, 1");
         this.hospitalList.add(hosp4);
@@ -126,7 +126,7 @@ public class Ecosystem {
         house1.setAddressLine1("75 saint alphonsus");
         house1.setAddressLine2("307");
         house1.setState("MA");
-        house1.setCity(city1);
+        house1.setCity(community1.getCity());
         house1.setZipCode(02120);
         house1.setCommunity(community1);
 
@@ -134,7 +134,7 @@ public class Ecosystem {
         house2.setAddressLine1("95 saint peters");
         house2.setAddressLine2("300");
         house2.setState("MA");
-        house2.setCity(city1);
+        house2.setCity(community2.getCity());
         house2.setZipCode(02120);
         house2.setCommunity(community2);
 
