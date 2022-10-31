@@ -1086,8 +1086,8 @@ public class CommunityPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         boolean validated = false;
         boolean validatedOtherFields = false;
-        String selectedCity = city1.getSelectedItem() == null ? "" : city.getSelectedItem().toString();
-        String selectedCommunity = community1.getSelectedItem() == null ? "" : community.getSelectedItem().toString();
+        String selectedCity = city1.getSelectedItem() == null ? "" : city1.getSelectedItem().toString();
+        String selectedCommunity = community1.getSelectedItem() == null ? "" : community1.getSelectedItem().toString();
         String selectedGender = gender1.getSelectedItem()== null ? "" :gender1.getSelectedItem().toString();
         JDateChooser strtDt = dob1;
         if (!selectedCity.isEmpty() && !selectedCommunity.isEmpty() && !selectedGender.isEmpty() && strtDt != null) {

@@ -214,7 +214,7 @@ public class Home extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Login Failed, please enter valid credentials.");
             }
             else{
-                HospitalAdminWorkArea hspWrkArea = new HospitalAdminWorkArea(userNameTxt.getText());
+                HospitalAdminWorkArea hspWrkArea = new HospitalAdminWorkArea(ecoSys.getPersonDirectory().getPersonMap().get(userNameTxt.getText()));
                 this.setContentPane(hspWrkArea);
                 this.invalidate();
                 this.validate();

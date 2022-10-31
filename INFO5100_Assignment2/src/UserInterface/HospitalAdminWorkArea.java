@@ -6,6 +6,7 @@ package UserInterface;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import Model.Person;
 
 /**
  *
@@ -16,9 +17,9 @@ public class HospitalAdminWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form HospitalAdminWorkArea
      */
-    public HospitalAdminWorkArea(String hspAdminName) {
+    public HospitalAdminWorkArea(Person hspAdmin) {
         initComponents();
-        this.hospitalNameLabel.setText(hspAdminName);
+        this.hospitalNameLabel.setText(hspAdmin.getFirstName()+" "+hspAdmin.getLastName());
     }
 
     /**
