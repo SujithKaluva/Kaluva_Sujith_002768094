@@ -68,14 +68,14 @@ public class Home extends javax.swing.JFrame {
             .addGroup(leftPanelLayout.createSequentialGroup()
                 .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(leftPanelLayout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(jLabel3))
-                    .addGroup(leftPanelLayout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(jLabel4))
                     .addGroup(leftPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel5)))
+                        .addComponent(jLabel5))
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(jLabel3)))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
         leftPanelLayout.setVerticalGroup(
