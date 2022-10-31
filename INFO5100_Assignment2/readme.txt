@@ -8,22 +8,22 @@ Project Description
 
 This is a Hospital Management System application.
 It has 5 different users(Patient, Doctor, Community Admin, Hospital Admin, and System Admin).
-Each user can login to application by providing their credentials.
+Each user can log in to the application by providing their credentials.
 
-Only patient user has access to create his own user login, all other users need to contact admin for their profile creation.
+Only the patient user has access to create his own user login, all other users need to contact the admin for their profile creation.
 
 The roles and responsibilities are as follows
 
 Patient:
 
-Patient has access to book an appointment with a doctor, and have access to their own Encounter history which has vital signs which are added by doctor.
-By default on click of Book Appointment button, patient's city, community and nearby hospital and a doctor details auto-populated. 
-Patient has a flexibility to book an appointment with any doctor.
+A patient has access to book an appointment with a doctor and has access to their own Encounter history which has vital signs which are added by the doctor.
+By default on clicking of Book Appointment button, the patient's city, community, and nearby hospital and doctor details auto-populated. 
+A patient has the flexibility to book an appointment with any doctor.
 
 Doctor:
 
-Doctor can view all his appointments booked by patients, add/update vitals to encounter.
-Doctor have access to encounter history of patients.
+The doctor can view all his appointments booked by patients, and add/update vitals to encounters.
+Doctors have access to the encounter history of patients.
 
 Community Admin:
 
@@ -38,11 +38,11 @@ READ - Encounter History, Patient Directory.
 
 System Admin:
 
-System Admin has all access.
+The system Admin has all access.
 
 ======================================================================
 
-No user have access to delete an encounter.
+No user has access to delete an encounter.
 
 ======================================================================
 
