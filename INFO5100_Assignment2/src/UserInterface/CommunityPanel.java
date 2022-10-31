@@ -9,11 +9,15 @@ import Model.City;
 import Model.Community;
 import Model.House;
 import Model.Person;
+import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -34,8 +38,33 @@ public class CommunityPanel extends javax.swing.JPanel {
         cityComboBox.setModel(cityModelList);
         DefaultComboBoxModel cityModel = new DefaultComboBoxModel(ecoSystem.getCityListComboBox().toArray());
         city.setModel(cityModel);
-        DefaultComboBoxModel cityMode = new DefaultComboBoxModel(ecoSystem.getCityListComboBox().toArray());
-        city1.setModel(cityMode);
+        city1.setModel(cityModel);
+        fname.setName("First Name");
+        lname.setName("Last Name");
+        dob.setName("Date of Birth");
+        add1.setName("Address Line 1");
+        add2.setName("Address Line 2");
+        gender.setName("Gender");
+        email.setName("Email");
+        pnum.setName("Phone Number");
+        state.setName("State");
+        city.setName("City");
+        community.setName("Community");
+        zipcode.setName("Zipcode");
+        password.setName("Password");
+        fname1.setName("First Name");
+        lname1.setName("Last Name");
+        //personid1.setName("Person ID");
+        dob1.setName("Date of Birth");
+        add3.setName("Address Line 1");
+        add4.setName("Address Line 2");
+        gender1.setName("Gender");
+        email1.setName("Email");
+        pnum1.setName("Phone Number");
+        state1.setName("State");
+        city1.setName("City");
+        community1.setName("Community");
+        zipcode1.setName("Zipcode");
     }
 
     public void populateCommunityTable() {
@@ -564,6 +593,11 @@ public class CommunityPanel extends javax.swing.JPanel {
         city1.setBackground(new java.awt.Color(51, 51, 51));
         city1.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         city1.setForeground(new java.awt.Color(255, 255, 255));
+        city1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                city1ItemStateChanged(evt);
+            }
+        });
         city1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 city1ActionPerformed(evt);
@@ -666,7 +700,7 @@ public class CommunityPanel extends javax.swing.JPanel {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(352, 352, 352)
@@ -685,25 +719,19 @@ public class CommunityPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(state1)
+                                    .addComponent(community1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(state1)
-                                            .addComponent(community1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addGap(24, 24, 24)
-                                                .addComponent(jLabel23))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel19)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                                        .addGap(24, 24, 24)
+                                        .addComponent(jLabel23))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                        .addComponent(update)
-                                        .addGap(55, 55, 55)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel19)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(zipcode1)
-                                    .addComponent(delete)
                                     .addComponent(city1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(add4)
                             .addComponent(add3)
@@ -713,13 +741,18 @@ public class CommunityPanel extends javax.swing.JPanel {
                             .addComponent(lname1)
                             .addComponent(fname1)
                             .addComponent(search)
-                            .addComponent(dob1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(136, Short.MAX_VALUE))
+                            .addComponent(dob1, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(130, 130, 130)
+                                .addComponent(update)
+                                .addGap(55, 55, 55)
+                                .addComponent(delete)))))
+                .addContainerGap(199, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel30))
@@ -771,11 +804,11 @@ public class CommunityPanel extends javax.swing.JPanel {
                     .addComponent(jLabel23)
                     .addComponent(jLabel20)
                     .addComponent(community1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(update)
                     .addComponent(delete))
-                .addGap(18, 18, 18))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Search Community Admin", jPanel5);
@@ -799,7 +832,7 @@ public class CommunityPanel extends javax.swing.JPanel {
     private void addCommunityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCommunityBtnActionPerformed
         // TODO add your handling code here:
         if (!(cityComboBox.getSelectedItem().toString().isEmpty() && communityName.getText().isEmpty())) {
-            if (ecoSystem.getCityListComboBox().contains(communityName.getText())) {
+            if (ecoSystem.getCommunityListComboBox().contains(communityName.getText())) {
                 String cityName = cityComboBox.getSelectedItem().toString();
                 City city = new City(cityName);
                 Community comm = new Community();
@@ -830,7 +863,7 @@ public class CommunityPanel extends javax.swing.JPanel {
         for (Community c : ecoSystem.getCommunityList()) {
             community.setSelectedItem(null);
 
-            if (c.getCity().getCity().equals(city.getSelectedItem()==null?"":city.getSelectedItem().toString())) {
+            if (c.getCity().getCity().equals(city.getSelectedItem() == null ? "" : city.getSelectedItem().toString())) {
                 community.addItem(c.getCommunity().toString());
 
             }
@@ -869,38 +902,115 @@ public class CommunityPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        City city1 = new City(city.getSelectedItem().toString());
-        Community com = new Community();
-        com.setCommunity(community.getSelectedItem().toString());
-        com.setCity(city1);
-        House h = new House();
-        h.setAddressLine1(add1.getText());
-        h.setAddressLine2(add2.getText());
-        h.setState(state.getText());
-        h.setZipCode(Integer.parseInt(zipcode.getText()));
-        h.setCity(city1);
-        h.setCommunity(com);
-        Person person = new Person(fname.getText(), lname.getText(), dob.getDate(), email.getText(), gender.getSelectedItem().toString(),
-                Long.parseLong(pnum.getText()), h, password.getText());
-        ecoSystem.getCommunityAdminDirectory().getPasswordManager().put(password.getText(), email.getText());
-        JOptionPane.showMessageDialog(this, "Community Admin Added");
-        TableFilling();
-        fname.setText("");
-        lname.setText("");
-        dob.setDate(null);
-        gender.setSelectedItem(null);
-        email.setText("");
-        pnum.setText("");
-        add1.setText("");
-        add2.setText("");
-        state.setText("");
-        city.setSelectedItem(null);
-        community.setSelectedItem(null);
-        zipcode.setText("");
-        password.setText("");
+        boolean validated = false;
+        boolean validatedOtherFields = false;
+        String selectedCity = city.getSelectedItem() == null ? "" : city.getSelectedItem().toString();
+        String selectedCommunity = community.getSelectedItem() == null ? "" : community.getSelectedItem().toString();
+        String selectedGender = gender.getSelectedItem().toString();
+        JDateChooser strtDt = dob;
+        if (!selectedCity.isEmpty() && !selectedCommunity.isEmpty() && !selectedGender.isEmpty() && strtDt != null) {
+            validatedOtherFields = true;
+        } else {
+            JOptionPane.showMessageDialog(this, "All Fields are Mandatory!");
+        }
+        JTextField[] VARIABLE_CONSTANTS = {state, fname, lname, zipcode, add1, add2, email, pnum, password};
+        for (JTextField field : VARIABLE_CONSTANTS) {
+            if (!validateData(field)) {
+                validated = false;
+                break;
+            } else {
+                validated = true;
+                System.out.println("Validated");
+            }
+        }
+        if (validated && validatedOtherFields) {
+            City city1 = new City(city.getSelectedItem().toString());
+            Community com = new Community();
+            com.setCommunity(community.getSelectedItem().toString());
+            com.setCity(city1);
+            House h = new House();
+            h.setAddressLine1(add1.getText());
+            h.setAddressLine2(add2.getText());
+            h.setState(state.getText());
+            h.setZipCode(Integer.parseInt(zipcode.getText()));
+            h.setCity(city1);
+            h.setCommunity(com);
+            Person person = new Person(fname.getText(), lname.getText(), dob.getDate(), email.getText(), gender.getSelectedItem().toString(),
+                    Long.parseLong(pnum.getText()), h, password.getText());
+            ecoSystem.getCommunityAdminDirectory().getPasswordManager().put(password.getText(), email.getText());
+            JOptionPane.showMessageDialog(this, "Community Admin Added");
+            TableFilling();
+            fname.setText("");
+            lname.setText("");
+            dob.setDate(null);
+            gender.setSelectedItem(null);
+            email.setText("");
+            pnum.setText("");
+            add1.setText("");
+            add2.setText("");
+            state.setText("");
+            city.setSelectedItem(null);
+            community.setSelectedItem(null);
+            zipcode.setText("");
+            password.setText("");
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
+    
+    public boolean validateData(JComponent input) {
+   // HashMap<String,String> pManager;    
+    String name = input.getName();
+       // pManager = ecoSystem.getCommunityadmindirectory().getPasswordManager();
+        String errorMsg = "";
+        boolean raiseError = false;
+        String text = ((JTextField) input).getText().trim();
+        if (text == null || text.isEmpty()) {
+            raiseError = true;
+            errorMsg = String.format("Please enter a value. The value for %s cannot be empty", name);
+        } else {
+            switch (name) {
+                case "First Name":
+                    if (!text.matches("^[a-zA-z ]*$")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter valid values for %s", name);
+                    }
+                    break;
+                case "Last Name":
+                    if (!text.matches("^[a-zA-z ]*$")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter valid values for %s", name);
+                    }
+                    break;
+                case "Phone Number":
+                    if (!text.matches("^[0-9]{10}")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter a valid %s", name);
+                    }
+                    break;
+                case "Email":
+                    for(Person sanju:ecoSystem.getPersonDirectory().getPersonList()){
+                    if (sanju.getEmailId().equals(text)){
+                        raiseError = true;
+                        errorMsg = String.format("Email Id already exists, please enter a valid mail Id", name);
+                        break;
+                    }}
+                    if (!text.matches("^(.+)@(.+)$")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter a valid %s", name);
+                    }
+                    break;
 
+                default:
+                    break;
+            }
+        }
+        if (raiseError) {
+            JOptionPane.showMessageDialog(this, errorMsg);
+            return false;
+        }
+        return true;
+    }
+    
     private void city1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_city1ActionPerformed
         // TODO add your handling code here:
 
@@ -908,7 +1018,7 @@ public class CommunityPanel extends javax.swing.JPanel {
         for(Community c:ecoSystem.getCommunityList()){
             community1.setSelectedItem(null);
 
-            if(c.getCity().getCity().equals(city.getSelectedItem().toString()))
+            if(c.getCity().getCity().equals(city.getSelectedItem()==null?"":city.getSelectedItem().toString()))
             {
                 community1.addItem(c.getCommunity().toString());
 
@@ -994,8 +1104,8 @@ public class CommunityPanel extends javax.swing.JPanel {
                 patient.setGender(gender1.getText());
                 patient.getHouse().setAddressLine1(add3.getText());
                 patient.getHouse().setAddressLine2(add4.getText());
-                patient.getHouse().getCity().setCity(city1.getSelectedItem().toString());
-                patient.getHouse().getCommunity().setCommunity(community1.getSelectedItem().toString());
+                patient.getHouse().getCity().setCity(city1.getSelectedItem()==null?"":city1.getSelectedItem().toString());
+                patient.getHouse().getCommunity().setCommunity(community1.getSelectedItem()==null?"":community1.getSelectedItem().toString());
                 patient.getHouse().setState(state1.getText());
                 patient.getHouse().setZipCode(Integer.valueOf(zipcode1.getText()));
                 patient.setPhoneNumber(Long.parseLong(pnum1.getText()));
@@ -1017,6 +1127,20 @@ public class CommunityPanel extends javax.swing.JPanel {
                 break;
             }}
     }//GEN-LAST:event_updateActionPerformed
+
+    private void city1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_city1ItemStateChanged
+        // TODO add your handling code here:
+        String cityName = city1.getSelectedItem()==null?"":city1.getSelectedItem().toString();
+        ArrayList<String> communityBoxList = new ArrayList<String>();
+        for(Community c:ecoSystem.getCommunityList()){
+            if(c.getCity().getCity().equals(cityName)){
+                communityBoxList.add(c.getCommunity());
+            }
+        }
+        
+        DefaultComboBoxModel communityModelList = new DefaultComboBoxModel(communityBoxList.toArray());
+        community1.setModel(communityModelList);
+    }//GEN-LAST:event_city1ItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
