@@ -53,6 +53,12 @@ public class PatientDirectory {
         this.patientMap.put(pObj.getEmailId(),pObj);
     }
     
+    public void removePatient(Patient pObj){
+        this.patientList.remove(pObj);
+        this.passwordManager.remove(pObj.getEmailId());
+        this.patientMap.remove(pObj.getEmailId());
+    }
+    
     public boolean isUsernameAvailable(String username){
         if(passwordManager.containsKey(username)) return false;
         else return true;

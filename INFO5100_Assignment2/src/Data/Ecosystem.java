@@ -27,6 +27,8 @@ public class Ecosystem {
     private EncounterHistory encounterHistory;
     private DoctorDirectory doctorDirectory;
     private SystemAdminDirectory systemAdminDirectory;
+    private HospitalAdminDirectory hospitalAdminDirectory;
+    private CommunityAdminDirectory communityAdminDirectory;
     private ArrayList<City> cityList;
     private ArrayList<Community> communityList;
     private ArrayList<Hospital> hospitalList;
@@ -42,6 +44,8 @@ public class Ecosystem {
         encounterHistory = new EncounterHistory();
         doctorDirectory = new DoctorDirectory();
         systemAdminDirectory = new SystemAdminDirectory();
+        hospitalAdminDirectory = new HospitalAdminDirectory();
+        communityAdminDirectory = new CommunityAdminDirectory();
         cityList = new ArrayList<>();
         communityList = new ArrayList<>();
         hospitalList = new ArrayList<>();
@@ -150,7 +154,8 @@ public class Ecosystem {
         VitalSigns vt = new VitalSigns(100, 100, 180, 180, 100, 100, 180);
         Encounter en = new Encounter(dateVal, "Amnesia", pat, vt, s);
         Encounter en1 = new Encounter(dateVal, "Heart Attack", pat1,vt, s1);
-//        Person p = new Person("Taylor", "Swift", dateVal, "taylor@gmail.com", "Female",1345678902l,house1, "Taylor" );
+        Person p = new Person("Comm", "Admin", dateVal, "commadmin@gmail.com", "Female",1345678902l,house1, "commadmin" );
+        business.getCommunityAdminDirectory().addPasswordManager(p.getEmailId(), p.getPassword());
 //        Person p1 = new Person("Jonathan", "Smith",dateVal, "jonathan@gmail.com", "Male",4444444444l, house1, "Jonathan");
 //        Person p2 = new Person("Harshini", "Konda",dateVal, "harshini@gmail.com","Female",0000000000l, house2, "Harshini");
 //        Person p3 = new Person("Vihas", "Rathna",dateVal, "vihas@gmail.com","Male",1111111111l, house2, "Vihas");
@@ -158,6 +163,22 @@ public class Ecosystem {
 //        personDirectory.addPerson(p1);
 //        personDirectory.addPerson(p2);
 //        personDirectory.addPerson(p3);
+    }
+
+    public HospitalAdminDirectory getHospitalAdminDirectory() {
+        return hospitalAdminDirectory;
+    }
+
+    public void setHospitalAdminDirectory(HospitalAdminDirectory hospitalAdminDirectory) {
+        this.hospitalAdminDirectory = hospitalAdminDirectory;
+    }
+
+    public CommunityAdminDirectory getCommunityAdminDirectory() {
+        return communityAdminDirectory;
+    }
+
+    public void setCommunityAdminDirectory(CommunityAdminDirectory communityAdminDirectory) {
+        this.communityAdminDirectory = communityAdminDirectory;
     }
 
     public ArrayList<Hospital> getHospitalList() {

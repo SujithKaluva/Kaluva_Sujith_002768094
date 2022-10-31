@@ -147,13 +147,13 @@ Patient patient;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        for(Doctor doctor1 : ecoSystem.getDoctorDirectory().getDoctorList()){
-        if((doctor.getSelectedItem()==null?"":doctor.getSelectedItem().toString()).equals(doctor1.getFirstName())){
-        VitalSigns vt = new VitalSigns(0, 0, 0, 0, 0, 0, 0);
-        Encounter encounter = new Encounter(date.getDate(), "", patient, vt, doctor1); 
-        //ecoSystem.getEncounterHistory().addEncounter(encounter);
-         JOptionPane.showMessageDialog(this, "Appointment Booked");
-        }
+        for(Doctor doctor1 : ecoSystem.getDoctorDirectory().getDoctorList()) {
+            if ((doctor.getSelectedItem() == null ? "" : doctor.getSelectedItem().toString()).equals(doctor1.getFirstName())) {
+                VitalSigns vt = new VitalSigns(0, 0, 0, 0, 0, 0, 0);
+                Encounter encounter = new Encounter(date.getDate(), "", patient, vt, doctor1);
+                //ecoSystem.getEncounterHistory().addEncounter(encounter);
+                JOptionPane.showMessageDialog(this, "Appointment Booked");
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

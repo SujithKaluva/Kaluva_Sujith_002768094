@@ -197,7 +197,7 @@ public class Home extends javax.swing.JFrame {
             }
         }
         else if(userRole.getSelectedItem().toString().equals("Community Admin")){
-            pManager = ecoSys.getPatientDirectory().getPasswordManager();
+            pManager = ecoSys.getCommunityAdminDirectory().getPasswordManager();
             if(!(pManager.containsKey(userNameTxt.getText()) && pManager.get(userNameTxt.getText()).equals(passwordTxt.getText()))){
                 JOptionPane.showMessageDialog(this, "Login Failed, please enter valid credentials.");
             }
@@ -209,7 +209,7 @@ public class Home extends javax.swing.JFrame {
             }
         }
         else if(userRole.getSelectedItem().toString().equals("Hospital Admin")){
-            pManager = ecoSys.getPatientDirectory().getPasswordManager();
+            pManager = ecoSys.getHospitalAdminDirectory().getPasswordManager();
             if(!(pManager.containsKey(userNameTxt.getText()) && pManager.get(userNameTxt.getText()).equals(passwordTxt.getText()))){
                 JOptionPane.showMessageDialog(this, "Login Failed, please enter valid credentials.");
             }
