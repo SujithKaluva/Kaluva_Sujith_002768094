@@ -37,6 +37,8 @@ public class Home extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         leftPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         rightPanel = new javax.swing.JPanel();
         userNameTxt = new javax.swing.JTextField();
         passwordTxt = new javax.swing.JPasswordField();
@@ -48,32 +50,51 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        leftPanel.setBackground(new java.awt.Color(102, 204, 255));
+        leftPanel.setBackground(new java.awt.Color(51, 51, 51));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/hospital.png"))); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Hospital Management System");
+
+        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel5.setText("Developed by Sujith Kaluva");
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jLabel3)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(jLabel3))
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel4))
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel5)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(186, 186, 186)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel4)
+                .addGap(120, 120, 120)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addContainerGap())
         );
 
         rightPanel.setBackground(new java.awt.Color(204, 204, 204));
         rightPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        userNameTxt.setBackground(new java.awt.Color(153, 204, 255));
-        userNameTxt.setForeground(new java.awt.Color(0, 0, 0));
+        userNameTxt.setBackground(new java.awt.Color(51, 51, 51));
+        userNameTxt.setForeground(new java.awt.Color(255, 255, 255));
         userNameTxt.setToolTipText("Username");
         userNameTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,8 +103,8 @@ public class Home extends javax.swing.JFrame {
         });
         rightPanel.add(userNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 252, 32));
 
-        passwordTxt.setBackground(new java.awt.Color(153, 204, 255));
-        passwordTxt.setForeground(new java.awt.Color(0, 0, 0));
+        passwordTxt.setBackground(new java.awt.Color(51, 51, 51));
+        passwordTxt.setForeground(new java.awt.Color(255, 255, 255));
         passwordTxt.setToolTipText("Password");
         passwordTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +119,7 @@ public class Home extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/user.png"))); // NOI18N
         rightPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 30, 30));
 
-        signUpBtn.setBackground(new java.awt.Color(0, 102, 204));
+        signUpBtn.setBackground(new java.awt.Color(0, 51, 102));
         signUpBtn.setForeground(new java.awt.Color(255, 255, 255));
         signUpBtn.setText("Sign Up");
         signUpBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -118,8 +139,8 @@ public class Home extends javax.swing.JFrame {
         });
         rightPanel.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, -1, -1));
 
-        userRole.setBackground(new java.awt.Color(153, 204, 255));
-        userRole.setForeground(new java.awt.Color(0, 0, 0));
+        userRole.setBackground(new java.awt.Color(51, 51, 51));
+        userRole.setForeground(new java.awt.Color(255, 255, 255));
         userRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Doctor", "Community Admin", "Hospital Admin", "System Admin" }));
         rightPanel.add(userRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 163, 250, 30));
 
@@ -129,8 +150,8 @@ public class Home extends javax.swing.JFrame {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,6 +306,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JButton loginBtn;
     private javax.swing.JPanel mainPanel;
