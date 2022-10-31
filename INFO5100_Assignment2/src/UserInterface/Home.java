@@ -202,7 +202,7 @@ public class Home extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Login Failed, please enter valid credentials.");
             }
             else{
-                CommunityAdminWorkArea cmWrkArea = new CommunityAdminWorkArea(userNameTxt.getText());
+                CommunityAdminWorkArea cmWrkArea = new CommunityAdminWorkArea(ecoSys.getPersonDirectory().getPersonMap().get(userNameTxt.getText()));
                 this.setContentPane(cmWrkArea);
                 this.invalidate();
                 this.validate();

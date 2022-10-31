@@ -156,7 +156,8 @@ public class Ecosystem {
         Encounter en1 = new Encounter(dateVal, "Heart Attack", pat1,vt, s1);
         Person p = new Person("Comm", "Admin", dateVal, "commadmin@gmail.com", "Female",1345678902l,house1, "commadmin" );
         business.getCommunityAdminDirectory().addPasswordManager(p.getEmailId(), p.getPassword());
-//        Person p1 = new Person("Jonathan", "Smith",dateVal, "jonathan@gmail.com", "Male",4444444444l, house1, "Jonathan");
+        Person p1 = new Person("Jonathan", "Smith",dateVal, "hospadmin@gmail.com", "Male",4444444444l, house1, "hospadmin");
+        business.getHospitalAdminDirectory().addPasswordManager(p1.getEmailId(), p1.getPassword());
 //        Person p2 = new Person("Harshini", "Konda",dateVal, "harshini@gmail.com","Female",0000000000l, house2, "Harshini");
 //        Person p3 = new Person("Vihas", "Rathna",dateVal, "vihas@gmail.com","Male",1111111111l, house2, "Vihas");
 //        personDirectory.addPerson(p);

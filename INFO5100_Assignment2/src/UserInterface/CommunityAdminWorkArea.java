@@ -6,6 +6,7 @@ package UserInterface;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import Model.Person;
 
 /**
  *
@@ -16,9 +17,9 @@ public class CommunityAdminWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form CommunityAdminWorkArea
      */
-    public CommunityAdminWorkArea(String commAdminName) {
+    public CommunityAdminWorkArea(Person commAdmin) {
         initComponents();
-        this.commAdminName.setText(commAdminName);
+        this.commAdminName.setText(commAdmin.getFirstName()+" "+commAdmin.getLastName());
     }
 
     /**
@@ -168,7 +169,7 @@ public class CommunityAdminWorkArea extends javax.swing.JPanel {
 
     private void communityPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_communityPanelActionPerformed
         // TODO add your handling code here:
-        CommunityPanel commpanel = new CommunityPanel();
+        CommunityPanelForCommAdmin commpanel = new CommunityPanelForCommAdmin();
         mainPanel.setRightComponent(commpanel);
     }//GEN-LAST:event_communityPanelActionPerformed
 

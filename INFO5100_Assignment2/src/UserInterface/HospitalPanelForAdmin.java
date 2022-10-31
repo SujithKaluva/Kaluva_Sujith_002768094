@@ -17,15 +17,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author sujithkaluva
  */
-public class HospitalCreationPanel extends javax.swing.JPanel {
+public class HospitalPanelForAdmin extends javax.swing.JPanel {
 
     /**
-     * Creates new form HospitalCreationPanel
+     * Creates new form HospitalPanelForAdmin
      */
     Ecosystem ecoSystem = Ecosystem.getInstance();
     Hospital hObjUpdate;
 
-    public HospitalCreationPanel() {
+    public HospitalPanelForAdmin() {
         initComponents();
         populateHospitals();
         DefaultComboBoxModel cityModelList = new DefaultComboBoxModel(ecoSystem.getCityListComboBox().toArray());
@@ -429,8 +429,8 @@ public class HospitalCreationPanel extends javax.swing.JPanel {
             ecoSystem.addHospital(hospObj);
 
             populateHospitals();
-            JOptionPane.showMessageDialog(this, "Hospital Created!");
 
+            JOptionPane.showMessageDialog(this, "Hospital Created!");
             hospitalName.setText("");
             phoneNumber.setText("");
             address.setText("");

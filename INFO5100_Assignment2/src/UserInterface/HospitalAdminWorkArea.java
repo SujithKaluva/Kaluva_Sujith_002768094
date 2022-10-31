@@ -200,7 +200,7 @@ public class HospitalAdminWorkArea extends javax.swing.JPanel {
 
     private void hospitalsPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalsPanelActionPerformed
         // TODO add your handling code here:
-        HospitalCreationPanel hospPanel = new HospitalCreationPanel();
+        HospitalPanelForAdmin hospPanel = new HospitalPanelForAdmin();
         mainPanel.setRightComponent(hospPanel);
     }//GEN-LAST:event_hospitalsPanelActionPerformed
 

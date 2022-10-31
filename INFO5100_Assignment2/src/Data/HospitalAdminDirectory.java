@@ -24,8 +24,7 @@ public class HospitalAdminDirectory {
     public void setPasswordManager(HashMap<String, String> passwordManager) {
         this.passwordManager = passwordManager;
     }
-    public HashMap<String, String> addPasswordManager(String a, String b) {
+    public void addPasswordManager(String a, String b) {
          passwordManager.put(a, b);
-         return passwordManager;
     }
 }
