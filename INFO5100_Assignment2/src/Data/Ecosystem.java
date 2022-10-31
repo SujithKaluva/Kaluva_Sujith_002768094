@@ -152,8 +152,8 @@ public class Ecosystem {
         business.doctorDirectory.addDoctor(s1);
 
         VitalSigns vt = new VitalSigns(100, 100, 180, 180, 100, 100, 180);
-        Encounter en = new Encounter(dateVal, "Amnesia", pat, vt, s);
-        Encounter en1 = new Encounter(dateVal, "Heart Attack", pat1,vt, s1);
+        Encounter en = new Encounter(dateVal, "Fever", pat, vt, s);
+        Encounter en1 = new Encounter(dateVal, "Head Ache", pat1,vt, s1);
         Person p = new Person("Comm", "Admin", dateVal, "commadmin@gmail.com", "Female",1345678902l,house1, "commadmin" );
         business.getCommunityAdminDirectory().addPasswordManager(p.getEmailId(), p.getPassword());
         Person p1 = new Person("Jonathan", "Smith",dateVal, "hospadmin@gmail.com", "Male",4444444444l, house1, "hospadmin");

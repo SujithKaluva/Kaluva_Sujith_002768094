@@ -11,6 +11,7 @@ import Model.Encounter;
 import Model.Hospital;
 import Model.Patient;
 import Model.VitalSigns;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -27,6 +28,8 @@ Patient patient;
     public Appointment_Booking(Patient patient) {
         initComponents();
         this.patient = patient;
+        DefaultComboBoxModel cityModelList = new DefaultComboBoxModel(ecoSystem.getCityListComboBox().toArray());
+        city.setModel(cityModelList);
         TableFilling(); 
     }
 
@@ -48,10 +51,14 @@ Patient patient;
         jLabel4 = new javax.swing.JLabel();
         date = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
+        community = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        city = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Appointment Booking");
 
@@ -91,6 +98,34 @@ Patient patient;
             }
         });
 
+        community.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                communityItemStateChanged(evt);
+            }
+        });
+        community.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                communityActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Select Community:");
+
+        city.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cityItemStateChanged(evt);
+            }
+        });
+        city.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cityActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Select City:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,31 +133,49 @@ Patient patient;
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(257, 257, 257)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                        .addGap(145, 145, 145)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(jLabel4))
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(community, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(hospital, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(doctor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(date, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(200, Short.MAX_VALUE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButton1)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(hospital, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(doctor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(date, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(25, 25, 25)
+                                    .addComponent(jLabel6)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(city, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(46, 46, 46)
                 .addComponent(jLabel1)
-                .addGap(38, 38, 38)
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(community, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(hospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -136,12 +189,20 @@ Patient patient;
                     .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(jButton1)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void doctorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_doctorItemStateChanged
         // TODO add your handling code here:
+        DefaultComboBoxModel<String> mode1 = new DefaultComboBoxModel<String>();
+        for (Hospital hos:ecoSystem.getHospitalList())
+        { if (hos.getCommunity().getCommunity().equals(patient.getHouse().getCommunity().getCommunity()))
+            
+        { mode1.addElement(hos.getHospitalName());}
+        }
+        hospital.setModel(mode1);
+        hospitalItemStateChanged(null);
         
     }//GEN-LAST:event_doctorItemStateChanged
 
@@ -168,11 +229,12 @@ Patient patient;
         // TODO add your handling code here:
         DefaultComboBoxModel<String> mode1 = new DefaultComboBoxModel<String>();
         for (Doctor d : ecoSystem.getDoctorDirectory().getDoctorList()) {
-            if (hospital.getSelectedItem().toString().equals(d.getHospital().getHospitalName())) {
+            if ((hospital.getSelectedItem()==null?"":hospital.getSelectedItem().toString()).equals(d.getHospital().getHospitalName())) {
                 mode1.addElement(d.getFirstName());
             }
         }
         doctor.setModel(mode1);
+        doctor.setSelectedItem("");
     }//GEN-LAST:event_hospitalItemStateChanged
 
     private void hospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalActionPerformed
@@ -180,8 +242,52 @@ Patient patient;
         
     }//GEN-LAST:event_hospitalActionPerformed
 
+    private void communityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_communityItemStateChanged
+        // TODO add your handling code here:
+        String commName = community.getSelectedItem()==null?"":community.getSelectedItem().toString();
+        ArrayList<String> hospBoxList = new ArrayList<String>();
+        for(Hospital c:ecoSystem.getHospitalList()){
+            if(c.getCommunity().getCommunity().equals(commName)){
+                hospBoxList.add(c.getHospitalName());
+            }
+        }
+        DefaultComboBoxModel hospModelList = new DefaultComboBoxModel(hospBoxList.toArray());
+        hospital.setModel(hospModelList);
+        hospitalItemStateChanged(null);
+        hospital.setSelectedItem("");
+        doctor.setSelectedItem("");
+    }//GEN-LAST:event_communityItemStateChanged
+
+    private void communityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_communityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_communityActionPerformed
+
+    private void cityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cityItemStateChanged
+        // TODO add your handling code here:
+        String cityName = city.getSelectedItem()==null?"":city.getSelectedItem().toString();
+        ArrayList<String> communityBoxList = new ArrayList<String>();
+        for(Community c:ecoSystem.getCommunityList()){
+            if(c.getCity().getCity().equals(cityName)){
+                communityBoxList.add(c.getCommunity());
+            }
+        }
+        DefaultComboBoxModel communityModelList = new DefaultComboBoxModel(communityBoxList.toArray());
+        community.setModel(communityModelList);
+        communityItemStateChanged(null);
+        hospitalItemStateChanged(null);
+        community.setSelectedItem("");
+        hospital.setSelectedItem("");
+        doctor.setSelectedItem("");
+    }//GEN-LAST:event_cityItemStateChanged
+
+    private void cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cityActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> city;
+    private javax.swing.JComboBox<String> community;
     private com.toedter.calendar.JDateChooser date;
     private javax.swing.JComboBox<String> doctor;
     private javax.swing.JComboBox<String> hospital;
@@ -190,10 +296,13 @@ Patient patient;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 
     private void TableFilling() {
         DefaultComboBoxModel<String> mode1 = new DefaultComboBoxModel<String>();
+        mode1.addElement("");
         for (Hospital hos:ecoSystem.getHospitalList())
         { if (hos.getCommunity().getCommunity().equals(patient.getHouse().getCommunity().getCommunity()))
             
@@ -201,5 +310,8 @@ Patient patient;
         }
         hospital.setModel(mode1);
         hospitalItemStateChanged(null);
+        community.setSelectedItem("");
+        hospital.setSelectedItem("");
+        doctor.setSelectedItem("");
     }
 }
