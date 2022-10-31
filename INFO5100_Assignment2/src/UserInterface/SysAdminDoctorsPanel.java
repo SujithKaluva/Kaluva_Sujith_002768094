@@ -38,18 +38,39 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
         city.setModel(cityModelList);
         city3.setModel(cityModelList);
         firstName.setName("patientFirstName");
+        firstName1.setName("patientFirstName");
         lastName.setName("patientLastName");
+        lastName1.setName("patientLastName");
         eMailId.setName("patientEmailId");
+        eMailId1.setName("patientEmailId");
         dateOfBirth.setName("patientDOB");
+        dateOfBirth1.setName("patientDOB");
         gender.setName("patientGender");
+        gender1.setName("patientGender");
         phone.setName("patientPhone");
+        phone1.setName("patientPhone");
         addressLine1.setName("addressLine1");
+        addressLine11.setName("addressLine1");
         addressLine2.setName("addressLine2");
+        addressLine21.setName("addressLine2");
         community.setName("patientCommunity");
+        community1.setName("patientCommunity");
         city.setName("patientCity");
+        city3.setName("patientCity");
         state.setName("patientState");
+        state1.setName("patientState");
         zipCode.setName("patientZipCode");
+        zipCode1.setName("patientZipCode");
+        specialisation.setName("Specialization");
+        specialisation1.setName("Specialization");
+        degree.setName("Degree");
+        degree1.setName("Degree");
+        experience.setName("Experience");
+        experience1.setName("Experience");
+        hospital.setName("Hospital");
+        hospital2.setName("Hospital");
         passWord.setName("password");
+        passWord1.setName("password");
         populateDoctorDirectory();
 
     }
@@ -82,6 +103,12 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
             errorMsg = String.format("Please enter a value. The value for %s cannot be empty", name);
         } else {
             switch (name) {
+                case "Experience":
+                    if (!text.matches("^[0-9]{1}||[0-9]{2}||[0-9]{3}")) {
+                        raiseError = true;
+                        errorMsg = String.format("Please enter valid values for %s", name);
+                    }
+                    break;
                 case "patientFirstName":
                     if (!text.matches("^[a-zA-z ]*$")) {
                         raiseError = true;
@@ -960,16 +987,16 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
         boolean validated = false;
         boolean validatedOtherFields = false;
         String selectedGender = gender.getSelectedItem().toString();
-        String selectedCity = city.getSelectedItem().toString();
-        String hos = hospital.getSelectedItem().toString();
-        String selectedCommunity = community.getSelectedItem().toString();
+        String selectedCity = city.getSelectedItem()==null?"":city.getSelectedItem().toString();
+        String selectedCommunity = community.getSelectedItem()==null?"":community.getSelectedItem().toString();
+        String hos = hospital.getSelectedItem()==null?"":hospital.getSelectedItem().toString();
         JDateChooser strtDt = dateOfBirth;
         if (!selectedCity.isEmpty() && !selectedCommunity.isEmpty() && !selectedGender.isEmpty() && strtDt != null && !specialisation.getText().isEmpty() && !degree.getText().isEmpty() && !experience.getText().isEmpty() && !hos.isEmpty()) {
             validatedOtherFields = true;
         } else {
             JOptionPane.showMessageDialog(this, "All Fields are Mandatory!");
         }
-        JTextField[] VARIABLE_CONSTANTS = {firstName, lastName, eMailId, phone, addressLine1, addressLine2, state, zipCode, passWord};
+        JTextField[] VARIABLE_CONSTANTS = {firstName, lastName, eMailId, phone, addressLine1, addressLine2, state, zipCode,degree, experience, specialisation, passWord};
         for (JTextField field : VARIABLE_CONSTANTS) {
             if (!validateData(field)) {
                 validated = false;
@@ -995,12 +1022,33 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
             house.setAddressLine2(addressLine2.getText());
             house.setState(state.getText());
             house.setZipCode(Integer.valueOf(zipCode.getText()));
+            house.setCity(city);
+            house.setCommunity(community);
             //String specialisation, String degree, int experience, Hospital hospital, String firstName, String lastName, Date dateOfBirth, String emailId, String gender, long phoneNumber, House house, String password
             Doctor d = new Doctor(specialisation.getText(), degree.getText(), Integer.parseInt(experience.getText()), h, firstName.getText(), lastName.getText(), dateOfBirth.getDate(), eMailId.getText(), gender.getSelectedItem().toString(), Long.parseLong(phone.getText()), house, passWord.getText());
             //System.out.println("Patient Size" + ecoSystem.getPatientDirectory().getPatientList().size());
             //System.out.println("Person Size" + ecoSystem.getPersonDirectory().getPersonList().size());
             ecoSystem.getDoctorDirectory().addDoctor(d);
             populateDoctorDirectory();
+            
+            JOptionPane.showMessageDialog(this, "Doctor Created Successfully!!");
+        firstName.setText("");
+        lastName.setText("");
+        eMailId.setText("");
+        dateOfBirth.setDate(null);
+        gender.setSelectedItem("");
+        phone.setText("");
+        addressLine1.setText("");
+        addressLine2.setText("");
+        state.setText("");
+        zipCode.setText("");
+        specialisation.setText("");
+        degree.setText("");
+        experience.setText("");
+        hospital.setSelectedItem("");
+        this.city.setSelectedItem("");
+        this.community.setSelectedItem("");
+        passWord.setText("");
         }
 
     }//GEN-LAST:event_createDoctorActionPerformed
@@ -1191,6 +1239,30 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
 
     private void updateDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDoctorActionPerformed
         // TODO add your handling code here:
+        
+        boolean validated = false;
+        boolean validatedOtherFields = false;
+        String selectedGender = gender1.getSelectedItem().toString();
+        String selectedCity = city3.getSelectedItem()==null?"":city3.getSelectedItem().toString();
+        String hos = hospital2.getSelectedItem()==null?"":hospital2.getSelectedItem().toString();
+        String selectedCommunity = community1.getSelectedItem()==null?"":community1.getSelectedItem().toString();
+        JDateChooser strtDt = dateOfBirth1;
+        if (!selectedCity.isEmpty() && !selectedCommunity.isEmpty() && !selectedGender.isEmpty() && strtDt != null && !specialisation1.getText().isEmpty() && !degree1.getText().isEmpty() && !experience1.getText().isEmpty() && !hos.isEmpty()) {
+            validatedOtherFields = true;
+        } else {
+            JOptionPane.showMessageDialog(this, "All Fields are Mandatory!");
+        }
+        JTextField[] VARIABLE_CONSTANTS = {firstName1, lastName1, eMailId1, phone1, addressLine11, addressLine21, state1, zipCode1,degree1, experience1, specialisation1, passWord1};
+        for (JTextField field : VARIABLE_CONSTANTS) {
+            if (!validateData(field)) {
+                validated = false;
+                break;
+            } else {
+                validated = true;
+                System.out.println("Validated");
+            }
+        }
+         if (validated && validatedOtherFields) {
         if(selectedDoctor!=null){
             selectedDoctor.setFirstName(firstName1.getText());
             selectedDoctor.setLastName(lastName1.getText());
@@ -1240,7 +1312,7 @@ public class SysAdminDoctorsPanel extends javax.swing.JPanel {
         }
         else{
             JOptionPane.showMessageDialog(this, "Doctor Not Found!");
-        }
+        }}
         
     }//GEN-LAST:event_updateDoctorActionPerformed
 

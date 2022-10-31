@@ -33,10 +33,12 @@ public class DoctorWorkArea extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jSplitPane1 = new javax.swing.JSplitPane();
+        mainJPanel = new javax.swing.JPanel();
+        mainPanel = new javax.swing.JSplitPane();
         jPanel2 = new javax.swing.JPanel();
         logOutAdmin = new javax.swing.JButton();
+        appointmentsBtn = new javax.swing.JButton();
+        encounterHistory = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         doctorName = new javax.swing.JLabel();
@@ -52,24 +54,51 @@ public class DoctorWorkArea extends javax.swing.JPanel {
             }
         });
 
+        appointmentsBtn.setBackground(new java.awt.Color(255, 255, 204));
+        appointmentsBtn.setForeground(new java.awt.Color(0, 0, 0));
+        appointmentsBtn.setText("Appointments");
+        appointmentsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                appointmentsBtnActionPerformed(evt);
+            }
+        });
+
+        encounterHistory.setBackground(new java.awt.Color(255, 255, 204));
+        encounterHistory.setForeground(new java.awt.Color(0, 0, 0));
+        encounterHistory.setText("Encounters");
+        encounterHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                encounterHistoryActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(logOutAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(logOutAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(appointmentsBtn)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(encounterHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(401, Short.MAX_VALUE)
+                .addGap(86, 86, 86)
+                .addComponent(appointmentsBtn)
+                .addGap(18, 18, 18)
+                .addComponent(encounterHistory)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
                 .addComponent(logOutAdmin)
                 .addGap(21, 21, 21))
         );
 
-        jSplitPane1.setLeftComponent(jPanel2);
+        mainPanel.setLeftComponent(jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -102,28 +131,28 @@ public class DoctorWorkArea extends javax.swing.JPanel {
                 .addContainerGap(219, Short.MAX_VALUE))
         );
 
-        jSplitPane1.setRightComponent(jPanel3);
+        mainPanel.setRightComponent(jPanel3);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+        javax.swing.GroupLayout mainJPanelLayout = new javax.swing.GroupLayout(mainJPanel);
+        mainJPanel.setLayout(mainJPanelLayout);
+        mainJPanelLayout.setHorizontalGroup(
+            mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mainPanel)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+        mainJPanelLayout.setVerticalGroup(
+            mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mainPanel)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -135,14 +164,28 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         home.setVisible(true);
     }//GEN-LAST:event_logOutAdminActionPerformed
 
+    private void appointmentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointmentsBtnActionPerformed
+        // TODO add your handling code here:
+        AppointmentDoctor aptDctr = new AppointmentDoctor(doctor);
+        mainPanel.setRightComponent(aptDctr);
+    }//GEN-LAST:event_appointmentsBtnActionPerformed
+
+    private void encounterHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_encounterHistoryActionPerformed
+        // TODO add your handling code here:
+        ViewEncounterdoctor enDctr = new ViewEncounterdoctor(doctor);
+        mainPanel.setRightComponent(enDctr);
+    }//GEN-LAST:event_encounterHistoryActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton appointmentsBtn;
     private javax.swing.JLabel doctorName;
+    private javax.swing.JButton encounterHistory;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton logOutAdmin;
+    private javax.swing.JPanel mainJPanel;
+    private javax.swing.JSplitPane mainPanel;
     // End of variables declaration//GEN-END:variables
 }

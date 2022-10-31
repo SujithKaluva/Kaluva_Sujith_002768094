@@ -148,7 +148,7 @@ Patient patient;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         for(Doctor doctor1 : ecoSystem.getDoctorDirectory().getDoctorList()){
-        if(doctor.getSelectedItem().toString().equals(doctor1.getFirstName())){
+        if((doctor.getSelectedItem()==null?"":doctor.getSelectedItem().toString()).equals(doctor1.getFirstName())){
         VitalSigns vt = new VitalSigns(0, 0, 0, 0, 0, 0, 0);
         Encounter encounter = new Encounter(date.getDate(), "", patient, vt, doctor1); 
         //ecoSystem.getEncounterHistory().addEncounter(encounter);
@@ -160,12 +160,11 @@ Patient patient;
     private void hospitalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_hospitalItemStateChanged
         // TODO add your handling code here:
         DefaultComboBoxModel<String> mode1 = new DefaultComboBoxModel<String>();
-        for (Doctor d:ecoSystem.getDoctorDirectory().getDoctorList()){
-        if (hospital.getSelectedItem().toString().equals(d.getHospital().getHospitalName()))
-        {
-        mode1.addElement(d.getFirstName());
-        }
+        for (Doctor d : ecoSystem.getDoctorDirectory().getDoctorList()) {
+            if (hospital.getSelectedItem().toString().equals(d.getHospital().getHospitalName())) {
+                mode1.addElement(d.getFirstName());
             }
+        }
         doctor.setModel(mode1);
     }//GEN-LAST:event_hospitalItemStateChanged
 

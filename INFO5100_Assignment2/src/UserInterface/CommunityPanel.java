@@ -191,14 +191,19 @@ public class CommunityPanel extends javax.swing.JPanel {
     private void addCommunityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCommunityBtnActionPerformed
         // TODO add your handling code here:
         if(!(cityComboBox.getSelectedItem().toString().isEmpty() && communityName.getText().isEmpty())) {
-            String cityName = cityComboBox.getSelectedItem().toString();
-            City city = new City(cityName);
-            Community comm = new Community();
-            comm.setCity(city);
-            comm.setCommunity(communityName.getText());
-            ecoSystem.addCommunity(comm);
-            //Update table with new community
-            populateCommunityTable();
+            if(ecoSystem.getCityListComboBox().contains(communityName.getText())){
+                String cityName = cityComboBox.getSelectedItem().toString();
+                City city = new City(cityName);
+                Community comm = new Community();
+                comm.setCity(city);
+                comm.setCommunity(communityName.getText());
+                ecoSystem.addCommunity(comm);
+                //Update table with new community
+                populateCommunityTable();
+            }
+            else{
+            JOptionPane.showMessageDialog(this, "Community already exists.");
+            }
         } else {
             JOptionPane.showMessageDialog(this, "All Fields are mandatory.");
         }

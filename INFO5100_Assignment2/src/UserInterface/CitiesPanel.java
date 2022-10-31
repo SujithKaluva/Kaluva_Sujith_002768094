@@ -160,9 +160,14 @@ public class CitiesPanel extends javax.swing.JPanel {
     private void addCityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCityBtnActionPerformed
         // TODO add your handling code here:
         if(!city.getText().isEmpty()) {
-            City cityObj = new City(city.getText());
-            ecoSystem.addCity(cityObj);
-            populateCities();
+            if(!ecoSystem.getCityListComboBox().contains(city.getText())){
+                City cityObj = new City(city.getText());
+                ecoSystem.addCity(cityObj);
+                populateCities();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "City already exists.");
+            }
         }
         else{
             JOptionPane.showMessageDialog(this, "Please enter a valid City");

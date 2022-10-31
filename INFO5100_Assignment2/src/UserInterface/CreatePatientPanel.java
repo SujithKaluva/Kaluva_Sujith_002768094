@@ -228,6 +228,12 @@ public class CreatePatientPanel extends javax.swing.JPanel {
             }
         });
 
+        community.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                communityItemStateChanged(evt);
+            }
+        });
+
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Community :");
 
@@ -456,8 +462,8 @@ public class CreatePatientPanel extends javax.swing.JPanel {
         boolean validated = false;
         boolean validatedOtherFields = false;
         String selectedGender = gender.getSelectedItem().toString();
-        String selectedCity = city.getSelectedItem().toString();
-        String selectedCommunity = community.getSelectedItem().toString();
+        String selectedCity = city.getSelectedItem()==null?"":city.getSelectedItem().toString();
+        String selectedCommunity = community.getSelectedItem()==null?"":community.getSelectedItem().toString();
         JDateChooser strtDt = dateOfBirth;
         if(!selectedCity.isEmpty() && !selectedCommunity.isEmpty() && !selectedGender.isEmpty() && strtDt!=null){
             validatedOtherFields = true;
@@ -581,6 +587,10 @@ public class CreatePatientPanel extends javax.swing.JPanel {
         community.setModel(communityModelList);
         
     }//GEN-LAST:event_cityItemStateChanged
+
+    private void communityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_communityItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_communityItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
