@@ -31,6 +31,10 @@ Patient patient;
         DefaultComboBoxModel cityModelList = new DefaultComboBoxModel(ecoSystem.getCityListComboBox().toArray());
         city.setModel(cityModelList);
         TableFilling(); 
+        city.setSelectedItem(patient.getHouse().getCity().getCity());
+        community.setSelectedItem(patient.getHouse().getCommunity().getCommunity());
+        communityItemStateChanged(null);
+        hospitalItemStateChanged(null);
     }
 
 
