@@ -80,7 +80,6 @@ public class searchEmployee extends javax.swing.JPanel {
         empAgeLabel = new javax.swing.JLabel();
         empStartDateLabel = new javax.swing.JLabel();
         empGenderLabel = new javax.swing.JLabel();
-        empStartDatePicker = new com.toedter.calendar.JDateChooser();
         empLevelLabel = new javax.swing.JLabel();
         empTeamInfoLabel = new javax.swing.JLabel();
         empPositionTitleLabel = new javax.swing.JLabel();
@@ -92,6 +91,7 @@ public class searchEmployee extends javax.swing.JPanel {
         updateEmployeeBtn = new javax.swing.JButton();
         deleteEmpBtn = new javax.swing.JButton();
         updatePhoto = new javax.swing.JButton();
+        empStartDatePicker = new com.toedter.calendar.JDateChooser();
 
         searchPanel.setBackground(new java.awt.Color(51, 51, 51));
         searchPanel.setForeground(new java.awt.Color(255, 255, 255));
@@ -191,9 +191,6 @@ public class searchEmployee extends javax.swing.JPanel {
         empGenderLabel.setForeground(new java.awt.Color(255, 255, 255));
         empGenderLabel.setText("Gender");
 
-        empStartDatePicker.setBackground(new java.awt.Color(255, 255, 255));
-        empStartDatePicker.setForeground(new java.awt.Color(0, 0, 0));
-
         empLevelLabel.setForeground(new java.awt.Color(255, 255, 255));
         empLevelLabel.setText("Level");
 
@@ -282,8 +279,8 @@ public class searchEmployee extends javax.swing.JPanel {
                                     .addComponent(empAgeTxt)
                                     .addComponent(empLevelTxt)
                                     .addComponent(empTeamInfoTxt)
-                                    .addComponent(empGenderBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(empStartDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(empGenderBox, 0, 195, Short.MAX_VALUE)
+                                    .addComponent(empStartDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(searchPanelLayout.createSequentialGroup()
                                 .addGap(100, 100, 100)
                                 .addComponent(viewPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -296,8 +293,12 @@ public class searchEmployee extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(empPositionTitleTxt))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
+                                        .addComponent(updateEmployeeBtn)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(deleteEmpBtn))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(searchPanelLayout.createSequentialGroup()
                                             .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -307,12 +308,7 @@ public class searchEmployee extends javax.swing.JPanel {
                                             .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(empEmailTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                                                 .addComponent(empPhoneTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
-                                        .addComponent(contactInfoLabel))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
-                                        .addComponent(updateEmployeeBtn)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(deleteEmpBtn)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                        .addComponent(contactInfoLabel))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, searchPanelLayout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,7 +321,7 @@ public class searchEmployee extends javax.swing.JPanel {
                             .addComponent(searchEmpLabel))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(searchPanelLayout.createSequentialGroup()
-                        .addContainerGap(408, Short.MAX_VALUE)
+                        .addContainerGap(480, Short.MAX_VALUE)
                         .addComponent(empIdLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(empIdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -359,7 +355,7 @@ public class searchEmployee extends javax.swing.JPanel {
                         .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(empGenderLabel)
                             .addComponent(empGenderBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(8, 8, 8)
                         .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(empStartDateLabel)
                             .addComponent(empStartDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
